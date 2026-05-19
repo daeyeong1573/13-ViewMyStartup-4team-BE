@@ -22,7 +22,7 @@ model Startup {
   categoryId          String    @map("category_id")
   name                String
   description         String
-  imgUrl              String    @map("img_url")
+  imgUrl              String?   @map("img_url")
   totalInvestment     BigInt    @default(0) @map("total_investment")
   revenue             BigInt    @default(0)
   employeeCount       Int       @default(0) @map("employee_count")
@@ -37,6 +37,11 @@ model Startup {
   mySelections       CompareSelection[]  @relation("MyStartup")
   compareSelections  CompareSelection[]  @relation("CompareStartup")
 
+  @@index([totalInvestment])
+  @@index([revenue])
+  @@index([employeeCount])
+  @@index([myStartupCount])
+  @@index([compareStartupCount])
   @@map("startup")
 }
 
@@ -52,6 +57,8 @@ model VirtualInvestment {
 
   startup Startup @relation(fields: [startupId], references: [id])
 
+  @@index([amount])
+  @@index([startupId])
   @@map("virtual_investment")
 }
 
