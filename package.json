@@ -1,7 +1,7 @@
 {
-  "name": "sprint-be",
+  "name": "startup-be",
   "version": "1.0.0",
-  "description": "13BE스프린트",
+  "description": "startup-be-4team",
   "main": "app.js",
   "type": "module",
   "scripts": {
@@ -20,6 +20,8 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^6.19.3",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
