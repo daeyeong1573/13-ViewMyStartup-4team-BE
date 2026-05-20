@@ -1,16 +1,19 @@
 import { z } from "zod";
-const STARTUP = {
-  RECENT_MY_STARTUP_DEFAULT_LIMIT: 5,
-  RECENT_MY_STARTUP_MAX_LIMIT: 5,
+
+const STARTUP_PAGINATION = {
+  DEFAULT_LIMIT: 10,
+  MAX_LIMIT: 100,
 };
 
-export const recentMyStartupQuerySchema = z.object({
+export const startupListQuerySchema = z.object({
   search: z.string().trim().optional(),
-  limit: z
-    .string()
-    .optional()
-    .transform((val) =>
-      val ? parseInt(val, 10) : STARTUP.RECENT_MY_STARTUP_DEFAULT_LIMIT,
-    )
-    .pipe(z.number().int().min(1).max(STARTUP.RECENT_MY_STARTUP_MAX_LIMIT)),
+
+  page: z.coerce.number().int().min(1).default(1),
+
+  limit: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .max(STARTUP_PAGINATION.MAX_LIMIT)
+    .default(STARTUP_PAGINATION.DEFAULT_LIMIT),
 });
