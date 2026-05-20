@@ -1,0 +1,4 @@
+@local_url = http://localhost:3000
+
+###GET select my company
+GET {{local_url}}/startups/recent-my

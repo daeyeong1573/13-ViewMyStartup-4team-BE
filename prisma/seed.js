@@ -1,33 +1,17 @@
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
 async function main() {
   console.log("🌱 Seeding database...");
 
-  const passwordHash = await bcrypt.hash("1234", 10);
-
-  // ─── 1. CATEGORY ────────────────────────────────────────────────────────────
-  await prisma.category.createMany({
-    data: [
-      { id: "cat-edtech", name: "에듀테크" },
-      { id: "cat-fintech", name: "핀테크" },
-      { id: "cat-healthtech", name: "헬스테크" },
-      { id: "cat-ecommerce", name: "이커머스" },
-      { id: "cat-ai", name: "AI·빅데이터" },
-    ],
-    skipDuplicates: true,
-  });
-  console.log("✅ 카테고리 5개 생성");
-
-  // ─── 2. STARTUP (50개) ──────────────────────────────────────────────────────
+  // ─── 1. STARTUP (50개) ──────────────────────────────────────────────────────
   await prisma.startup.createMany({
     data: [
       // 에듀테크 (10개)
       {
         id: "sta-001",
-        categoryId: "cat-edtech",
+        category: "에듀테크",
         name: "코드잇",
         description:
           "코드잇은 온라인 코딩 교육 서비스를 운영하는 EdTech 스타트업입니다. 모든 강의를 자체 제작하여 퀄리티 높은 콘텐츠를 제공하고, 코딩 교육에 최적화된 플랫폼을 개발하고 있습니다. 2021년 Series B 투자를 받아 누적 140억 원의 투자를 받았습니다.",
@@ -37,11 +21,10 @@ async function main() {
         employeeCount: 68,
         myStartupCount: 7204,
         compareStartupCount: 9224,
-        latestSelectedAt: new Date("2024-12-01T10:00:00Z"),
       },
       {
         id: "sta-002",
-        categoryId: "cat-edtech",
+        category: "에듀테크",
         name: "메스프레소",
         description:
           "메스프레소는 AI 기반 수학 학습 앱 콴다를 운영하는 EdTech 스타트업입니다. 수학 문제를 촬영하면 AI가 즉시 풀이를 제공하며, 전 세계 50개국 이상에서 서비스를 제공하고 있습니다.",
@@ -51,11 +34,10 @@ async function main() {
         employeeCount: 40,
         myStartupCount: 5763,
         compareStartupCount: 5763,
-        latestSelectedAt: new Date("2024-11-30T09:00:00Z"),
       },
       {
         id: "sta-003",
-        categoryId: "cat-edtech",
+        category: "에듀테크",
         name: "뤼이드",
         description:
           "뤼이드는 AI 기반 맞춤형 학습 솔루션을 제공하는 EdTech 스타트업입니다. 토익 학습 앱 산타토익으로 유명하며, AI가 개인의 취약점을 분석해 최적의 학습 경로를 제안합니다.",
@@ -65,11 +47,10 @@ async function main() {
         employeeCount: 102,
         myStartupCount: 9804,
         compareStartupCount: 8766,
-        latestSelectedAt: new Date("2024-11-29T08:00:00Z"),
       },
       {
         id: "sta-004",
-        categoryId: "cat-edtech",
+        category: "에듀테크",
         name: "엘리스",
         description:
           "엘리스는 AI 기반 코딩 교육 플랫폼을 운영하는 EdTech 스타트업입니다. 기업과 대학을 대상으로 맞춤형 온라인 교육 솔루션을 제공하며, 국내 주요 대학 및 기업과 파트너십을 맺고 있습니다.",
@@ -79,11 +60,10 @@ async function main() {
         employeeCount: 13,
         myStartupCount: 4004,
         compareStartupCount: 5883,
-        latestSelectedAt: new Date("2024-11-28T07:00:00Z"),
       },
       {
         id: "sta-005",
-        categoryId: "cat-edtech",
+        category: "에듀테크",
         name: "아이해이트플라잉버그",
         description:
           "아이해이트플라잉버그는 비전공자를 위한 소프트웨어 교육 서비스를 제공하는 EdTech 스타트업입니다. 실무 중심의 커리큘럼으로 취업까지 연계하는 부트캠프를 운영하고 있습니다.",
@@ -93,11 +73,10 @@ async function main() {
         employeeCount: 97,
         myStartupCount: 1768,
         compareStartupCount: 2975,
-        latestSelectedAt: new Date("2024-11-27T06:00:00Z"),
       },
       {
         id: "sta-006",
-        categoryId: "cat-edtech",
+        category: "에듀테크",
         name: "팀스파르타",
         description:
           "팀스파르타는 비개발자를 위한 코딩 교육 플랫폼 스파르타코딩클럽을 운영하는 스타트업입니다. 웹개발, 앱개발, 데이터 분석 등 실무 중심의 강의를 제공하며 수료 후 취업을 지원합니다.",
@@ -107,11 +86,10 @@ async function main() {
         employeeCount: 55,
         myStartupCount: 3951,
         compareStartupCount: 7506,
-        latestSelectedAt: new Date("2024-11-26T05:00:00Z"),
       },
       {
         id: "sta-007",
-        categoryId: "cat-edtech",
+        category: "에듀테크",
         name: "코드스테이츠",
         description:
           "코드스테이츠는 소프트웨어 인재 양성에 특화된 EdTech 스타트업입니다. 수강 후 취업 성공 시 소득공유 방식의 ISA 모델을 도입해 교육비 부담 없이 학습할 수 있는 환경을 제공합니다.",
@@ -121,11 +99,10 @@ async function main() {
         employeeCount: 80,
         myStartupCount: 2890,
         compareStartupCount: 4120,
-        latestSelectedAt: new Date("2024-11-25T04:00:00Z"),
       },
       {
         id: "sta-008",
-        categoryId: "cat-edtech",
+        category: "에듀테크",
         name: "클래스101",
         description:
           "클래스101은 취미와 커리어를 위한 온라인 클래스 플랫폼입니다. 드로잉, 음악, 요리, 재테크 등 다양한 분야의 강의를 크리에이터와 연결하여 누구나 쉽게 배울 수 있는 환경을 제공합니다.",
@@ -135,11 +112,10 @@ async function main() {
         employeeCount: 120,
         myStartupCount: 6540,
         compareStartupCount: 8100,
-        latestSelectedAt: new Date("2024-11-24T03:00:00Z"),
       },
       {
         id: "sta-009",
-        categoryId: "cat-edtech",
+        category: "에듀테크",
         name: "패스트캠퍼스",
         description:
           "패스트캠퍼스는 성인 직장인을 위한 실무 교육 플랫폼입니다. IT, 디자인, 비즈니스, 마케팅 등 직무에 필요한 스킬을 온·오프라인으로 배울 수 있으며, 기업 맞춤형 B2B 교육도 제공합니다.",
@@ -149,11 +125,10 @@ async function main() {
         employeeCount: 150,
         myStartupCount: 5210,
         compareStartupCount: 6330,
-        latestSelectedAt: new Date("2024-11-23T02:00:00Z"),
       },
       {
         id: "sta-010",
-        categoryId: "cat-edtech",
+        category: "에듀테크",
         name: "프로그래머스",
         description:
           "프로그래머스는 개발자 채용과 코딩 교육을 연결하는 플랫폼입니다. 코딩 테스트 문제 풀이, 스킬 기반 채용, 개발자 역량 평가 등 개발자 커리어 성장을 위한 다양한 서비스를 제공합니다.",
@@ -163,13 +138,12 @@ async function main() {
         employeeCount: 90,
         myStartupCount: 4780,
         compareStartupCount: 5990,
-        latestSelectedAt: new Date("2024-11-22T01:00:00Z"),
       },
 
       // 핀테크 (10개)
       {
         id: "sta-011",
-        categoryId: "cat-fintech",
+        category: "핀테크",
         name: "토스",
         description:
           "토스는 간편송금을 시작으로 금융 슈퍼앱으로 성장한 핀테크 기업입니다. 송금, 결제, 투자, 대출, 보험까지 하나의 앱에서 모든 금융 서비스를 제공하며, 국내 최대 핀테크 유니콘으로 자리매김했습니다.",
@@ -179,11 +153,10 @@ async function main() {
         employeeCount: 2500,
         myStartupCount: 15000,
         compareStartupCount: 18000,
-        latestSelectedAt: new Date("2024-12-01T11:00:00Z"),
       },
       {
         id: "sta-012",
-        categoryId: "cat-fintech",
+        category: "핀테크",
         name: "카카오페이",
         description:
           "카카오페이는 카카오톡 기반의 간편결제 및 금융 서비스를 제공하는 핀테크 기업입니다. QR 결제, 멤버십 통합 관리, 보험, 투자 등 일상 속 금융 경험을 혁신하고 있습니다.",
@@ -193,11 +166,10 @@ async function main() {
         employeeCount: 1800,
         myStartupCount: 12000,
         compareStartupCount: 15000,
-        latestSelectedAt: new Date("2024-12-01T09:00:00Z"),
       },
       {
         id: "sta-013",
-        categoryId: "cat-fintech",
+        category: "핀테크",
         name: "뱅크샐러드",
         description:
           "뱅크샐러드는 내 금융 데이터를 한 곳에서 관리하는 마이데이터 서비스입니다. 은행, 카드, 보험, 증권 등 흩어진 자산을 통합 조회하고 맞춤형 금융 상품을 추천해드립니다.",
@@ -207,11 +179,10 @@ async function main() {
         employeeCount: 350,
         myStartupCount: 8900,
         compareStartupCount: 9500,
-        latestSelectedAt: new Date("2024-11-30T10:00:00Z"),
       },
       {
         id: "sta-014",
-        categoryId: "cat-fintech",
+        category: "핀테크",
         name: "핀다",
         description:
           "핀다는 대출 비교 플랫폼으로 100개 이상의 금융기관 대출 상품을 한 번에 비교하고 신청할 수 있는 서비스입니다. AI 기반 맞춤 대출 추천으로 최적의 금융 조건을 찾아드립니다.",
@@ -221,11 +192,10 @@ async function main() {
         employeeCount: 200,
         myStartupCount: 5600,
         compareStartupCount: 6800,
-        latestSelectedAt: new Date("2024-11-29T10:00:00Z"),
       },
       {
         id: "sta-015",
-        categoryId: "cat-fintech",
+        category: "핀테크",
         name: "렌딧",
         description:
           "렌딧은 개인신용 P2P 대출 플랫폼으로 대출자와 투자자를 직접 연결합니다. 머신러닝 기반의 신용평가 모델로 중금리 대출 시장을 혁신하고 있습니다.",
@@ -235,11 +205,10 @@ async function main() {
         employeeCount: 130,
         myStartupCount: 3200,
         compareStartupCount: 4100,
-        latestSelectedAt: new Date("2024-11-28T10:00:00Z"),
       },
       {
         id: "sta-016",
-        categoryId: "cat-fintech",
+        category: "핀테크",
         name: "크레파스솔루션",
         description:
           "크레파스솔루션은 기업 맞춤형 금융 플랫폼 솔루션을 개발하는 B2B 핀테크 기업입니다. 디지털 뱅킹, 결제 인프라, 금융 API 등 금융 디지털 전환을 지원합니다.",
@@ -249,11 +218,10 @@ async function main() {
         employeeCount: 110,
         myStartupCount: 2100,
         compareStartupCount: 3000,
-        latestSelectedAt: new Date("2024-11-27T10:00:00Z"),
       },
       {
         id: "sta-017",
-        categoryId: "cat-fintech",
+        category: "핀테크",
         name: "페이워치",
         description:
           "페이워치는 직장인 급여 선지급 서비스를 제공하는 핀테크 스타트업입니다. 월급날 전에 이미 일한 만큼의 급여를 미리 받을 수 있어 급전이 필요한 직장인들의 금융 부담을 줄여줍니다.",
@@ -263,11 +231,10 @@ async function main() {
         employeeCount: 75,
         myStartupCount: 1800,
         compareStartupCount: 2200,
-        latestSelectedAt: new Date("2024-11-26T10:00:00Z"),
       },
       {
         id: "sta-018",
-        categoryId: "cat-fintech",
+        category: "핀테크",
         name: "두나무",
         description:
           "두나무는 증권 플랫폼 증권플러스와 암호화폐 거래소 업비트를 운영하는 핀테크 기업입니다. 블록체인 기술을 활용한 디지털 자산 관련 서비스를 국내외에 제공하고 있습니다.",
@@ -277,11 +244,10 @@ async function main() {
         employeeCount: 800,
         myStartupCount: 11000,
         compareStartupCount: 13000,
-        latestSelectedAt: new Date("2024-12-01T08:00:00Z"),
       },
       {
         id: "sta-019",
-        categoryId: "cat-fintech",
+        category: "핀테크",
         name: "웰컴페이먼츠",
         description:
           "웰컴페이먼츠는 온·오프라인 간편결제 및 PG 서비스를 제공하는 핀테크 기업입니다. 소상공인부터 대기업까지 다양한 사업자를 위한 결제 인프라를 구축하고 있습니다.",
@@ -291,11 +257,10 @@ async function main() {
         employeeCount: 300,
         myStartupCount: 4500,
         compareStartupCount: 5200,
-        latestSelectedAt: new Date("2024-11-25T10:00:00Z"),
       },
       {
         id: "sta-020",
-        categoryId: "cat-fintech",
+        category: "핀테크",
         name: "쿼터백",
         description:
           "쿼터백은 AI 기반 로보어드바이저 자산관리 서비스를 제공하는 핀테크 스타트업입니다. 알고리즘 기반 자동 투자로 개인 맞춤형 포트폴리오를 운용하며 안정적인 수익을 추구합니다.",
@@ -305,13 +270,12 @@ async function main() {
         employeeCount: 85,
         myStartupCount: 3100,
         compareStartupCount: 3800,
-        latestSelectedAt: new Date("2024-11-24T10:00:00Z"),
       },
 
       // 헬스테크 (10개)
       {
         id: "sta-021",
-        categoryId: "cat-healthtech",
+        category: "헬스테크",
         name: "닥터나우",
         description:
           "닥터나우는 비대면 진료 플랫폼으로 집에서 편리하게 의사 상담을 받고 약을 배달받을 수 있는 서비스입니다. 야간·휴일에도 진료가 가능해 의료 접근성을 높이고 있습니다.",
@@ -321,11 +285,10 @@ async function main() {
         employeeCount: 180,
         myStartupCount: 7800,
         compareStartupCount: 8900,
-        latestSelectedAt: new Date("2024-12-01T07:00:00Z"),
       },
       {
         id: "sta-022",
-        categoryId: "cat-healthtech",
+        category: "헬스테크",
         name: "메디블록",
         description:
           "메디블록은 블록체인 기반 의료 데이터 플랫폼입니다. 환자 중심의 의료 정보 관리, 병원 간 데이터 공유, 임상 데이터 활용 등 의료 데이터 혁신을 이끌고 있습니다.",
@@ -335,11 +298,10 @@ async function main() {
         employeeCount: 95,
         myStartupCount: 3400,
         compareStartupCount: 4200,
-        latestSelectedAt: new Date("2024-11-30T07:00:00Z"),
       },
       {
         id: "sta-023",
-        categoryId: "cat-healthtech",
+        category: "헬스테크",
         name: "라이프시맨틱스",
         description:
           "라이프시맨틱스는 디지털 치료제와 의료 AI 솔루션을 개발하는 헬스테크 기업입니다. 앱 기반 호흡 재활 치료제, AI 기반 진단 보조 솔루션 등 디지털 헬스케어를 선도합니다.",
@@ -349,11 +311,10 @@ async function main() {
         employeeCount: 110,
         myStartupCount: 2800,
         compareStartupCount: 3600,
-        latestSelectedAt: new Date("2024-11-29T07:00:00Z"),
       },
       {
         id: "sta-024",
-        categoryId: "cat-healthtech",
+        category: "헬스테크",
         name: "휴레이포지티브",
         description:
           "휴레이포지티브는 만성질환 관리 디지털 헬스케어 플랫폼입니다. 당뇨, 고혈압 등 만성질환 환자를 위한 생활 습관 코칭과 의료진 연결 서비스를 제공합니다.",
@@ -363,11 +324,10 @@ async function main() {
         employeeCount: 70,
         myStartupCount: 2200,
         compareStartupCount: 2900,
-        latestSelectedAt: new Date("2024-11-28T07:00:00Z"),
       },
       {
         id: "sta-025",
-        categoryId: "cat-healthtech",
+        category: "헬스테크",
         name: "눔코리아",
         description:
           "눔코리아는 심리학 기반 체중 감량 및 건강 관리 앱 눔을 운영합니다. 코칭 프로그램과 행동 변화 심리학을 결합하여 지속 가능한 건강한 생활 습관 형성을 돕습니다.",
@@ -377,11 +337,10 @@ async function main() {
         employeeCount: 250,
         myStartupCount: 6700,
         compareStartupCount: 7500,
-        latestSelectedAt: new Date("2024-11-27T07:00:00Z"),
       },
       {
         id: "sta-026",
-        categoryId: "cat-healthtech",
+        category: "헬스테크",
         name: "에이치알엠",
         description:
           "에이치알엠은 AI 기반 심전도 분석 솔루션을 개발하는 의료 AI 기업입니다. 웨어러블 기기와 연동하여 실시간 심장 건강 모니터링을 제공하며 심장 질환 조기 발견에 기여합니다.",
@@ -391,11 +350,10 @@ async function main() {
         employeeCount: 55,
         myStartupCount: 1500,
         compareStartupCount: 2100,
-        latestSelectedAt: new Date("2024-11-26T07:00:00Z"),
       },
       {
         id: "sta-027",
-        categoryId: "cat-healthtech",
+        category: "헬스테크",
         name: "인바디",
         description:
           "인바디는 체성분 분석 기기와 건강 관리 솔루션을 제공하는 헬스테크 기업입니다. 전 세계 100개국 이상에 체성분 분석 장비를 공급하며 글로벌 헬스케어 시장을 선도합니다.",
@@ -405,11 +363,10 @@ async function main() {
         employeeCount: 450,
         myStartupCount: 9200,
         compareStartupCount: 10100,
-        latestSelectedAt: new Date("2024-11-25T07:00:00Z"),
       },
       {
         id: "sta-028",
-        categoryId: "cat-healthtech",
+        category: "헬스테크",
         name: "올라케어",
         description:
           "올라케어는 비대면 진료와 약 처방·배달을 통합한 원스톱 헬스케어 플랫폼입니다. 내과, 피부과, 정신건강의학과 등 다양한 진료과 전문의와 빠르게 연결해드립니다.",
@@ -419,11 +376,10 @@ async function main() {
         employeeCount: 60,
         myStartupCount: 1900,
         compareStartupCount: 2700,
-        latestSelectedAt: new Date("2024-11-24T07:00:00Z"),
       },
       {
         id: "sta-029",
-        categoryId: "cat-healthtech",
+        category: "헬스테크",
         name: "셀바스헬스케어",
         description:
           "셀바스헬스케어는 디지털 헬스케어 기기와 AI 솔루션을 개발하는 기업입니다. 혈압계, 혈당계 등 가정용 의료기기와 병원 정보 시스템을 AI와 결합하여 스마트 헬스케어를 실현합니다.",
@@ -433,11 +389,10 @@ async function main() {
         employeeCount: 200,
         myStartupCount: 4100,
         compareStartupCount: 5000,
-        latestSelectedAt: new Date("2024-11-23T07:00:00Z"),
       },
       {
         id: "sta-030",
-        categoryId: "cat-healthtech",
+        category: "헬스테크",
         name: "웰트",
         description:
           "웰트는 스마트 벨트를 통해 사용자의 건강 데이터를 수집·분석하는 디지털 헬스케어 스타트업입니다. 허리둘레 변화, 활동량, 식습관 등을 모니터링해 비만 예방을 돕습니다.",
@@ -447,13 +402,12 @@ async function main() {
         employeeCount: 45,
         myStartupCount: 1300,
         compareStartupCount: 1800,
-        latestSelectedAt: new Date("2024-11-22T07:00:00Z"),
       },
 
       // 이커머스 (10개)
       {
         id: "sta-031",
-        categoryId: "cat-ecommerce",
+        category: "이커머스",
         name: "오늘의집",
         description:
           "오늘의집은 인테리어·라이프스타일 커머스 플랫폼입니다. 사용자가 직접 촬영한 인테리어 사진을 공유하고, 해당 제품을 바로 구매할 수 있는 콘텐츠 커머스 모델로 큰 인기를 얻고 있습니다.",
@@ -463,11 +417,10 @@ async function main() {
         employeeCount: 600,
         myStartupCount: 11000,
         compareStartupCount: 13500,
-        latestSelectedAt: new Date("2024-12-01T06:00:00Z"),
       },
       {
         id: "sta-032",
-        categoryId: "cat-ecommerce",
+        category: "이커머스",
         name: "컬리",
         description:
           "컬리는 신선식품 새벽배송 서비스 마켓컬리를 운영하는 이커머스 스타트업입니다. 밤 11시 이전에 주문하면 다음날 새벽 7시 전에 배송해드리는 샛별배송으로 신선식품 시장을 혁신했습니다.",
@@ -477,11 +430,10 @@ async function main() {
         employeeCount: 1200,
         myStartupCount: 13000,
         compareStartupCount: 15000,
-        latestSelectedAt: new Date("2024-12-01T05:00:00Z"),
       },
       {
         id: "sta-033",
-        categoryId: "cat-ecommerce",
+        category: "이커머스",
         name: "발란",
         description:
           "발란은 명품 패션 온라인 플랫폼입니다. 국내외 공식 부티크와 직접 파트너십을 맺어 정품 명품을 합리적인 가격에 구매할 수 있으며, 빠른 배송과 정품 보증 서비스를 제공합니다.",
@@ -491,11 +443,10 @@ async function main() {
         employeeCount: 280,
         myStartupCount: 6800,
         compareStartupCount: 8200,
-        latestSelectedAt: new Date("2024-11-30T06:00:00Z"),
       },
       {
         id: "sta-034",
-        categoryId: "cat-ecommerce",
+        category: "이커머스",
         name: "지그재그",
         description:
           "지그재그는 동대문 쇼핑몰을 기반으로 한 여성 패션 앱입니다. AI 기반 개인화 추천으로 사용자 취향에 맞는 스타일을 제안하며, 국내 여성 패션 앱 중 최다 사용자를 보유하고 있습니다.",
@@ -505,11 +456,10 @@ async function main() {
         employeeCount: 350,
         myStartupCount: 8500,
         compareStartupCount: 9800,
-        latestSelectedAt: new Date("2024-11-29T06:00:00Z"),
       },
       {
         id: "sta-035",
-        categoryId: "cat-ecommerce",
+        category: "이커머스",
         name: "브랜디",
         description:
           "브랜디는 동대문 패션 D2C 플랫폼입니다. 동대문 도매시장과 소비자를 직접 연결하여 빠른 배송과 저렴한 가격으로 최신 트렌드 의류를 제공합니다. B2B 솔루션도 운영합니다.",
@@ -519,11 +469,10 @@ async function main() {
         employeeCount: 200,
         myStartupCount: 4200,
         compareStartupCount: 5100,
-        latestSelectedAt: new Date("2024-11-28T06:00:00Z"),
       },
       {
         id: "sta-036",
-        categoryId: "cat-ecommerce",
+        category: "이커머스",
         name: "무신사",
         description:
           "무신사는 국내 최대 온라인 패션 플랫폼입니다. 스트리트 패션을 중심으로 시작해 현재 다양한 브랜드의 온라인 편집샵으로 성장했으며, 자체 PB 브랜드와 오프라인 매장도 운영합니다.",
@@ -533,11 +482,10 @@ async function main() {
         employeeCount: 1500,
         myStartupCount: 14000,
         compareStartupCount: 16000,
-        latestSelectedAt: new Date("2024-12-01T04:00:00Z"),
       },
       {
         id: "sta-037",
-        categoryId: "cat-ecommerce",
+        category: "이커머스",
         name: "크림",
         description:
           "크림은 한정판 스니커즈와 스트리트웨어 거래 플랫폼입니다. 네이버가 투자한 리셀 플랫폼으로 실물 검수를 통해 정품을 보증하고, 구매자와 판매자를 안전하게 연결합니다.",
@@ -547,11 +495,10 @@ async function main() {
         employeeCount: 320,
         myStartupCount: 7200,
         compareStartupCount: 8600,
-        latestSelectedAt: new Date("2024-11-27T06:00:00Z"),
       },
       {
         id: "sta-038",
-        categoryId: "cat-ecommerce",
+        category: "이커머스",
         name: "버킷플레이스",
         description:
           "버킷플레이스는 인테리어 O2O 플랫폼 오늘의집의 운영사입니다. 시공 중개, 가구 구매, 인테리어 커뮤니티를 하나의 앱에서 제공하며 홈 인테리어 시장을 통합하고 있습니다.",
@@ -561,11 +508,10 @@ async function main() {
         employeeCount: 700,
         myStartupCount: 10500,
         compareStartupCount: 12000,
-        latestSelectedAt: new Date("2024-11-26T06:00:00Z"),
       },
       {
         id: "sta-039",
-        categoryId: "cat-ecommerce",
+        category: "이커머스",
         name: "트렌비",
         description:
           "트렌비는 명품 직구 플랫폼으로 전 세계 1만여 개 명품 부티크와 연결해 정품 명품을 현지 가격으로 구매할 수 있게 합니다. AI 가격 비교와 정품 인증으로 신뢰 있는 명품 구매를 지원합니다.",
@@ -575,11 +521,10 @@ async function main() {
         employeeCount: 220,
         myStartupCount: 5300,
         compareStartupCount: 6400,
-        latestSelectedAt: new Date("2024-11-25T06:00:00Z"),
       },
       {
         id: "sta-040",
-        categoryId: "cat-ecommerce",
+        category: "이커머스",
         name: "마켓컬리",
         description:
           "마켓컬리는 새벽배송 전문 온라인 장보기 서비스입니다. 밤 11시 이전에 주문하면 다음날 새벽 7시 전에 배송해드리는 샛별배송으로 신선식품 새벽배송 시장을 개척했습니다.",
@@ -589,13 +534,12 @@ async function main() {
         employeeCount: 1100,
         myStartupCount: 12500,
         compareStartupCount: 14000,
-        latestSelectedAt: new Date("2024-12-01T03:00:00Z"),
       },
 
       // AI·빅데이터 (10개)
       {
         id: "sta-041",
-        categoryId: "cat-ai",
+        category: "AI·빅데이터",
         name: "뤼튼테크놀로지스",
         description:
           "뤼튼테크놀로지스는 AI 기반 글쓰기 도구와 생성형 AI 서비스를 개발하는 스타트업입니다. 마케팅 카피, 블로그 포스트, 광고 문구 등 다양한 콘텐츠를 AI로 빠르게 생성해드립니다.",
@@ -605,11 +549,10 @@ async function main() {
         employeeCount: 130,
         myStartupCount: 6100,
         compareStartupCount: 7300,
-        latestSelectedAt: new Date("2024-12-01T02:00:00Z"),
       },
       {
         id: "sta-042",
-        categoryId: "cat-ai",
+        category: "AI·빅데이터",
         name: "업스테이지",
         description:
           "업스테이지는 기업용 AI 솔루션을 개발하는 AI 스타트업입니다. 문서 AI, 검색 AI, LLM 등 기업 맞춤형 AI 솔루션을 제공하며 국내외 주요 기업들과 파트너십을 맺고 있습니다.",
@@ -619,11 +562,10 @@ async function main() {
         employeeCount: 160,
         myStartupCount: 5200,
         compareStartupCount: 6500,
-        latestSelectedAt: new Date("2024-11-30T02:00:00Z"),
       },
       {
         id: "sta-043",
-        categoryId: "cat-ai",
+        category: "AI·빅데이터",
         name: "스캐터랩",
         description:
           "스캐터랩은 AI 대화 기술을 연구하는 스타트업으로 감성 대화 AI 이루다를 개발했습니다. 자연스러운 한국어 대화가 가능한 AI 캐릭터 서비스를 제공하며 소셜 AI 시장을 개척하고 있습니다.",
@@ -633,11 +575,10 @@ async function main() {
         employeeCount: 100,
         myStartupCount: 4800,
         compareStartupCount: 5700,
-        latestSelectedAt: new Date("2024-11-29T02:00:00Z"),
       },
       {
         id: "sta-044",
-        categoryId: "cat-ai",
+        category: "AI·빅데이터",
         name: "수아랩",
         description:
           "수아랩은 딥러닝 기반 머신비전 솔루션을 개발하는 AI 스타트업입니다. 제조 공정의 불량 검출 자동화 솔루션으로 국내외 제조 기업들의 품질 관리 혁신을 지원합니다.",
@@ -647,11 +588,10 @@ async function main() {
         employeeCount: 88,
         myStartupCount: 2900,
         compareStartupCount: 3700,
-        latestSelectedAt: new Date("2024-11-28T02:00:00Z"),
       },
       {
         id: "sta-045",
-        categoryId: "cat-ai",
+        category: "AI·빅데이터",
         name: "딥엑스",
         description:
           "딥엑스는 온디바이스 AI 반도체(NPU)를 개발하는 팹리스 스타트업입니다. 클라우드 없이 기기 자체에서 AI 연산이 가능한 칩을 개발하여 엣지 AI 시장을 선도하고 있습니다.",
@@ -661,11 +601,10 @@ async function main() {
         employeeCount: 170,
         myStartupCount: 3800,
         compareStartupCount: 4600,
-        latestSelectedAt: new Date("2024-11-27T02:00:00Z"),
       },
       {
         id: "sta-046",
-        categoryId: "cat-ai",
+        category: "AI·빅데이터",
         name: "원티드랩",
         description:
           "원티드랩은 AI 기반 채용 플랫폼 원티드를 운영하는 HR테크 스타트업입니다. 지인 추천 채용 모델로 시작해 AI 매칭, 커리어 코칭, 연봉 협상 등 채용 전반의 경험을 혁신합니다.",
@@ -675,11 +614,10 @@ async function main() {
         employeeCount: 300,
         myStartupCount: 7600,
         compareStartupCount: 8900,
-        latestSelectedAt: new Date("2024-11-26T02:00:00Z"),
       },
       {
         id: "sta-047",
-        categoryId: "cat-ai",
+        category: "AI·빅데이터",
         name: "마인즈랩",
         description:
           "마인즈랩은 AI 풀스택 솔루션을 제공하는 기업으로 음성인식, 자연어처리, 컴퓨터비전 등 다양한 AI 기술을 바탕으로 기업 맞춤형 AI 솔루션을 개발하고 있습니다.",
@@ -689,11 +627,10 @@ async function main() {
         employeeCount: 120,
         myStartupCount: 3300,
         compareStartupCount: 4100,
-        latestSelectedAt: new Date("2024-11-25T02:00:00Z"),
       },
       {
         id: "sta-048",
-        categoryId: "cat-ai",
+        category: "AI·빅데이터",
         name: "코어닷투데이",
         description:
           "코어닷투데이는 AI 기반 금융 데이터 분석 플랫폼을 운영합니다. 비정형 금융 데이터를 AI로 분석해 투자자와 금융기관에 인사이트를 제공하며 데이터 기반 금융 의사결정을 지원합니다.",
@@ -703,11 +640,10 @@ async function main() {
         employeeCount: 75,
         myStartupCount: 2100,
         compareStartupCount: 2800,
-        latestSelectedAt: new Date("2024-11-24T02:00:00Z"),
       },
       {
         id: "sta-049",
-        categoryId: "cat-ai",
+        category: "AI·빅데이터",
         name: "루닛",
         description:
           "루닛은 의료 AI 스타트업으로 흉부 X-ray와 유방암 검진을 위한 AI 영상분석 솔루션을 개발합니다. FDA, CE 등 해외 인허가를 획득하며 글로벌 의료 AI 시장에서 주목받고 있습니다.",
@@ -717,11 +653,10 @@ async function main() {
         employeeCount: 230,
         myStartupCount: 6400,
         compareStartupCount: 7800,
-        latestSelectedAt: new Date("2024-11-23T02:00:00Z"),
       },
       {
         id: "sta-050",
-        categoryId: "cat-ai",
+        category: "AI·빅데이터",
         name: "튜닙",
         description:
           "튜닙은 LLM 기반 AI 캐릭터 대화 플랫폼을 개발하는 스타트업입니다. 기업이 자체 AI 캐릭터를 쉽게 만들고 운영할 수 있는 플랫폼을 제공하며, 엔터테인먼트·교육·커머스 분야에 적용됩니다.",
@@ -731,14 +666,13 @@ async function main() {
         employeeCount: 55,
         myStartupCount: 2500,
         compareStartupCount: 3200,
-        latestSelectedAt: new Date("2024-11-22T02:00:00Z"),
       },
     ],
     skipDuplicates: true,
   });
   console.log("✅ 스타트업 50개 생성");
 
-  // ─── 3. VIRTUAL_INVESTMENT ───────────────────────────────────────────────────
+  // ─── 2. VIRTUAL_INVESTMENT ───────────────────────────────────────────────────
   await prisma.virtualInvestment.createMany({
     data: [
       // 코드잇 투자 (5건)
@@ -748,7 +682,7 @@ async function main() {
         investorName: "김연우",
         amount: 1000000000n,
         comment: "코드잇은 정말 훌륭한 기업입니다!",
-        passwordHash,
+        password: "1234",
       },
       {
         id: "inv-002",
@@ -756,7 +690,7 @@ async function main() {
         investorName: "이유지",
         amount: 900000000n,
         comment: "코드잇의 성장 가능성은 무궁무진합니다!",
-        passwordHash,
+        password: "1234",
       },
       {
         id: "inv-003",
@@ -764,7 +698,7 @@ async function main() {
         investorName: "안다혜",
         amount: 800000000n,
         comment: "최고의 기업! 코드잇!",
-        passwordHash,
+        password: "1234",
       },
       {
         id: "inv-004",
@@ -772,7 +706,7 @@ async function main() {
         investorName: "신희성",
         amount: 700000000n,
         comment: "코드잇의 진출 분야는 무궁무진합니다.",
-        passwordHash,
+        password: "1234",
       },
       {
         id: "inv-005",
@@ -780,7 +714,7 @@ async function main() {
         investorName: "이용섭",
         amount: 600000000n,
         comment: "교육업계의 라이징 스타 코드잇을 신뢰합니다.",
-        passwordHash,
+        password: "1234",
       },
       // 토스 투자 (3건)
       {
@@ -789,7 +723,7 @@ async function main() {
         investorName: "박지수",
         amount: 5000000000n,
         comment: "핀테크 시장의 절대 강자!",
-        passwordHash,
+        password: "1234",
       },
       {
         id: "inv-007",
@@ -797,7 +731,7 @@ async function main() {
         investorName: "최민준",
         amount: 3000000000n,
         comment: "토스의 성장세는 정말 놀랍습니다.",
-        passwordHash,
+        password: "1234",
       },
       {
         id: "inv-008",
@@ -805,7 +739,7 @@ async function main() {
         investorName: "한소희",
         amount: 2000000000n,
         comment: "금융 혁신을 이끄는 토스를 응원합니다.",
-        passwordHash,
+        password: "1234",
       },
       // 닥터나우 투자 (2건)
       {
@@ -814,7 +748,7 @@ async function main() {
         investorName: "정현우",
         amount: 800000000n,
         comment: "헬스케어의 미래입니다!",
-        passwordHash,
+        password: "1234",
       },
       {
         id: "inv-010",
@@ -822,7 +756,7 @@ async function main() {
         investorName: "윤서연",
         amount: 500000000n,
         comment: "비대면 진료 시장을 선도할 기업!",
-        passwordHash,
+        password: "1234",
       },
       // 오늘의집 투자 (2건)
       {
@@ -831,7 +765,7 @@ async function main() {
         investorName: "김태양",
         amount: 2000000000n,
         comment: "인테리어 시장의 혁신가!",
-        passwordHash,
+        password: "1234",
       },
       {
         id: "inv-012",
@@ -839,7 +773,7 @@ async function main() {
         investorName: "이나은",
         amount: 1500000000n,
         comment: "콘텐츠 커머스의 최강자!",
-        passwordHash,
+        password: "1234",
       },
       // 뤼튼 투자 (2건)
       {
@@ -848,7 +782,7 @@ async function main() {
         investorName: "송민호",
         amount: 1000000000n,
         comment: "AI 글쓰기 시장의 선두주자!",
-        passwordHash,
+        password: "1234",
       },
       {
         id: "inv-014",
@@ -856,7 +790,7 @@ async function main() {
         investorName: "박세영",
         amount: 700000000n,
         comment: "생성형 AI 시대의 핵심 플레이어!",
-        passwordHash,
+        password: "1234",
       },
       // 루닛 투자 (2건)
       {
@@ -865,7 +799,7 @@ async function main() {
         investorName: "조은혜",
         amount: 1500000000n,
         comment: "의료 AI 글로벌 리더!",
-        passwordHash,
+        password: "1234",
       },
       {
         id: "inv-016",
@@ -873,80 +807,57 @@ async function main() {
         investorName: "강다인",
         amount: 1000000000n,
         comment: "루닛의 기술력은 세계 최고 수준!",
-        passwordHash,
+        password: "1234",
       },
     ],
     skipDuplicates: true,
   });
   console.log("✅ 가상 투자 16건 생성");
 
-  // ─── 4. COMPARE_SELECTION ────────────────────────────────────────────────────
+  // ─── 3. COMPARE_SELECTION (31개) ────────────────────────────────────────────
   await prisma.compareSelection.createMany({
     data: [
-      {
-        id: "cs-001",
-        myStartupId: "sta-001",
-        compareStartupId: "sta-002",
-        selectedAt: new Date("2024-12-01T10:00:00Z"),
-      },
-      {
-        id: "cs-002",
-        myStartupId: "sta-001",
-        compareStartupId: "sta-003",
-        selectedAt: new Date("2024-12-01T10:00:00Z"),
-      },
-      {
-        id: "cs-003",
-        myStartupId: "sta-001",
-        compareStartupId: "sta-004",
-        selectedAt: new Date("2024-12-01T10:00:00Z"),
-      },
-      {
-        id: "cs-004",
-        myStartupId: "sta-011",
-        compareStartupId: "sta-012",
-        selectedAt: new Date("2024-11-30T09:00:00Z"),
-      },
-      {
-        id: "cs-005",
-        myStartupId: "sta-011",
-        compareStartupId: "sta-013",
-        selectedAt: new Date("2024-11-30T09:00:00Z"),
-      },
-      {
-        id: "cs-006",
-        myStartupId: "sta-031",
-        compareStartupId: "sta-032",
-        selectedAt: new Date("2024-11-29T08:00:00Z"),
-      },
-      {
-        id: "cs-007",
-        myStartupId: "sta-031",
-        compareStartupId: "sta-036",
-        selectedAt: new Date("2024-11-29T08:00:00Z"),
-      },
-      {
-        id: "cs-008",
-        myStartupId: "sta-041",
-        compareStartupId: "sta-042",
-        selectedAt: new Date("2024-11-28T07:00:00Z"),
-      },
-      {
-        id: "cs-009",
-        myStartupId: "sta-041",
-        compareStartupId: "sta-049",
-        selectedAt: new Date("2024-11-28T07:00:00Z"),
-      },
-      {
-        id: "cs-010",
-        myStartupId: "sta-021",
-        compareStartupId: "sta-022",
-        selectedAt: new Date("2024-11-27T06:00:00Z"),
-      },
+      // sta-001 코드잇 (5회 선택)
+      { id: "cs-001", myStartupId: "sta-001", compareStartupId: "sta-002" },
+      { id: "cs-002", myStartupId: "sta-001", compareStartupId: "sta-006" },
+      { id: "cs-003", myStartupId: "sta-001", compareStartupId: "sta-007" },
+      { id: "cs-004", myStartupId: "sta-001", compareStartupId: "sta-008" },
+      { id: "cs-005", myStartupId: "sta-001", compareStartupId: "sta-009" },
+      { id: "cs-006", myStartupId: "sta-001", compareStartupId: "sta-010" },
+      { id: "cs-007", myStartupId: "sta-001", compareStartupId: "sta-003" },
+      { id: "cs-008", myStartupId: "sta-001", compareStartupId: "sta-011" },
+      // sta-011 토스 (4회 선택)
+      { id: "cs-009", myStartupId: "sta-011", compareStartupId: "sta-012" },
+      { id: "cs-010", myStartupId: "sta-011", compareStartupId: "sta-013" },
+      { id: "cs-011", myStartupId: "sta-011", compareStartupId: "sta-014" },
+      { id: "cs-012", myStartupId: "sta-011", compareStartupId: "sta-018" },
+      { id: "cs-013", myStartupId: "sta-011", compareStartupId: "sta-019" },
+      { id: "cs-014", myStartupId: "sta-011", compareStartupId: "sta-020" },
+      { id: "cs-015", myStartupId: "sta-011", compareStartupId: "sta-001" },
+      // sta-031 오늘의집 (3회 선택)
+      { id: "cs-016", myStartupId: "sta-031", compareStartupId: "sta-032" },
+      { id: "cs-017", myStartupId: "sta-031", compareStartupId: "sta-033" },
+      { id: "cs-018", myStartupId: "sta-031", compareStartupId: "sta-034" },
+      { id: "cs-019", myStartupId: "sta-031", compareStartupId: "sta-036" },
+      { id: "cs-020", myStartupId: "sta-031", compareStartupId: "sta-037" },
+      { id: "cs-021", myStartupId: "sta-031", compareStartupId: "sta-038" },
+      // sta-041 뤼튼테크놀로지스 (2회 선택)
+      { id: "cs-022", myStartupId: "sta-041", compareStartupId: "sta-042" },
+      { id: "cs-023", myStartupId: "sta-041", compareStartupId: "sta-043" },
+      { id: "cs-024", myStartupId: "sta-041", compareStartupId: "sta-044" },
+      { id: "cs-025", myStartupId: "sta-041", compareStartupId: "sta-049" },
+      { id: "cs-026", myStartupId: "sta-041", compareStartupId: "sta-045" },
+      // sta-021 닥터나우 (1회 선택)
+      { id: "cs-027", myStartupId: "sta-021", compareStartupId: "sta-022" },
+      { id: "cs-028", myStartupId: "sta-021", compareStartupId: "sta-023" },
+      { id: "cs-029", myStartupId: "sta-021", compareStartupId: "sta-024" },
+      { id: "cs-030", myStartupId: "sta-021", compareStartupId: "sta-025" },
+      { id: "cs-031", myStartupId: "sta-021", compareStartupId: "sta-027" },
+      // sta-006 팀스파르타: 0회 선택 (레코드 없음) ✅
     ],
     skipDuplicates: true,
   });
-  console.log("✅ 비교 선택 10건 생성");
+  console.log("✅ 비교 선택 31건 생성");
 
   console.log("🎉 Seeding 완료!");
 }
