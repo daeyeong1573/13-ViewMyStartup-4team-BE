@@ -54,7 +54,7 @@ model CompareSelection {
   id               String   @id @default(uuid())
   myStartupId      String   @map("my_startup_id")
   compareStartupId String   @map("compare_startup_id")
-  createAt         DateTime @default(now()) @map("create_at")
+  createdAt        DateTime @default(now()) @map("create_at")
 
   myStartup      Startup @relation("MyStartup", fields: [myStartupId], references: [id])
   compareStartup Startup @relation("CompareStartup", fields: [compareStartupId], references: [id])
