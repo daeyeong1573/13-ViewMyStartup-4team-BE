@@ -7,32 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Category {
-  id        String   @id @default(uuid())
-  name      String
-  createdAt DateTime @default(now()) @map("created_at")
-
-  startups Startup[]
-
-  @@map("category")
-}
-
 model Startup {
-  id                  String    @id @default(uuid())
-  categoryId          String    @map("category_id")
+  id                  String   @id @default(uuid())
+  category            String
   name                String
   description         String
-  imgUrl              String?   @map("img_url")
-  totalInvestment     BigInt    @default(0) @map("total_investment")
-  revenue             BigInt    @default(0)
-  employeeCount       Int       @default(0) @map("employee_count")
-  myStartupCount      Int       @default(0) @map("my_startup_count")
-  compareStartupCount Int       @default(0) @map("compare_startup_count")
-  latestSelectedAt    DateTime? @map("latest_selected_at")
-  createdAt           DateTime  @default(now()) @map("created_at")
-  updatedAt           DateTime  @updatedAt @map("updated_at")
+  imgUrl              String?  @map("img_url")
+  totalInvestment     BigInt   @default(0) @map("total_investment")
+  revenue             BigInt   @default(0)
+  employeeCount       Int      @default(0) @map("employee_count")
+  myStartupCount      Int      @default(0) @map("my_startup_count")
+  compareStartupCount Int      @default(0) @map("compare_startup_count")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
 
-  category           Category            @relation(fields: [categoryId], references: [id])
   virtualInvestments VirtualInvestment[]
   mySelections       CompareSelection[]  @relation("MyStartup")
   compareSelections  CompareSelection[]  @relation("CompareStartup")
@@ -51,7 +39,7 @@ model VirtualInvestment {
   investorName String   @map("investor_name")
   amount       BigInt
   comment      String
-  passwordHash String   @map("password_hash")
+  password     String   @map("password")
   createdAt    DateTime @default(now()) @map("created_at")
   updatedAt    DateTime @updatedAt @map("updated_at")
 
@@ -66,7 +54,7 @@ model CompareSelection {
   id               String   @id @default(uuid())
   myStartupId      String   @map("my_startup_id")
   compareStartupId String   @map("compare_startup_id")
-  selectedAt       DateTime @default(now()) @map("selected_at")
+  createAt         DateTime @default(now()) @map("create_at")
 
   myStartup      Startup @relation("MyStartup", fields: [myStartupId], references: [id])
   compareStartup Startup @relation("CompareStartup", fields: [compareStartupId], references: [id])
