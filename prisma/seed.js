@@ -10,7 +10,7 @@ async function main() {
     data: [
       // 에듀테크 (10개)
       {
-        id: "sta-001",
+        id: "23ccbb62-8274-4007-b74e-0113aa34a26c",
         category: "에듀테크",
         name: "코드잇",
         description:
@@ -23,7 +23,7 @@ async function main() {
         compareStartupCount: 9224,
       },
       {
-        id: "sta-002",
+        id: "293a7c9e-465c-4ec0-8d25-582e48498bce",
         category: "에듀테크",
         name: "메스프레소",
         description:
@@ -36,7 +36,7 @@ async function main() {
         compareStartupCount: 5763,
       },
       {
-        id: "sta-003",
+        id: "b08b6965-2ccb-4d53-ac00-fa36261ca74d",
         category: "에듀테크",
         name: "뤼이드",
         description:
@@ -49,7 +49,7 @@ async function main() {
         compareStartupCount: 8766,
       },
       {
-        id: "sta-004",
+        id: "8cde5c8a-c89f-4b4d-9339-68e4f9d301ab",
         category: "에듀테크",
         name: "엘리스",
         description:
@@ -62,7 +62,7 @@ async function main() {
         compareStartupCount: 5883,
       },
       {
-        id: "sta-005",
+        id: "cc444e49-6b6f-4830-bf57-271e8f851c0f",
         category: "에듀테크",
         name: "아이해이트플라잉버그",
         description:
@@ -75,7 +75,7 @@ async function main() {
         compareStartupCount: 2975,
       },
       {
-        id: "sta-006",
+        id: "a1290781-9d3c-433a-b62d-cbde4b0b7220",
         category: "에듀테크",
         name: "팀스파르타",
         description:
@@ -88,7 +88,7 @@ async function main() {
         compareStartupCount: 7506,
       },
       {
-        id: "sta-007",
+        id: "614e7dc0-9039-4af0-a5af-b8c7d8264c50",
         category: "에듀테크",
         name: "코드스테이츠",
         description:
@@ -101,7 +101,7 @@ async function main() {
         compareStartupCount: 4120,
       },
       {
-        id: "sta-008",
+        id: "39eca81e-23ee-48d0-b79a-25b45ab493ac",
         category: "에듀테크",
         name: "클래스101",
         description:
@@ -114,7 +114,7 @@ async function main() {
         compareStartupCount: 8100,
       },
       {
-        id: "sta-009",
+        id: "2cadd71b-d5f5-4cbd-988d-594ad5a55cde",
         category: "에듀테크",
         name: "패스트캠퍼스",
         description:
@@ -127,7 +127,7 @@ async function main() {
         compareStartupCount: 6330,
       },
       {
-        id: "sta-010",
+        id: "4fec64d9-f481-426c-963a-5a6e8c99dc69",
         category: "에듀테크",
         name: "프로그래머스",
         description:
@@ -142,7 +142,7 @@ async function main() {
 
       // 핀테크 (10개)
       {
-        id: "sta-011",
+        id: "f33242ed-6503-4537-aba5-b5918c045b85",
         category: "핀테크",
         name: "토스",
         description:
@@ -155,7 +155,7 @@ async function main() {
         compareStartupCount: 18000,
       },
       {
-        id: "sta-012",
+        id: "4b694ea2-9f37-4ed7-bc68-5f5ac0521c4a",
         category: "핀테크",
         name: "카카오페이",
         description:
@@ -168,7 +168,7 @@ async function main() {
         compareStartupCount: 15000,
       },
       {
-        id: "sta-013",
+        id: "cf28c06c-4740-4291-858b-c3770227109a",
         category: "핀테크",
         name: "뱅크샐러드",
         description:
@@ -181,7 +181,7 @@ async function main() {
         compareStartupCount: 9500,
       },
       {
-        id: "sta-014",
+        id: "7a70a544-5ff0-4ff8-9c0d-e2ad3ee5f6a7",
         category: "핀테크",
         name: "핀다",
         description:
@@ -194,7 +194,7 @@ async function main() {
         compareStartupCount: 6800,
       },
       {
-        id: "sta-015",
+        id: "a1fe93da-e8ab-4bc4-a17a-e86ca69952bb",
         category: "핀테크",
         name: "렌딧",
         description:
@@ -207,7 +207,7 @@ async function main() {
         compareStartupCount: 4100,
       },
       {
-        id: "sta-016",
+        id: "3c7e85cb-dce2-40fe-abf7-5aa61d5e8855",
         category: "핀테크",
         name: "크레파스솔루션",
         description:
@@ -220,7 +220,7 @@ async function main() {
         compareStartupCount: 3000,
       },
       {
-        id: "sta-017",
+        id: "e576e071-2d43-435b-850d-a5d4f3de10b2",
         category: "핀테크",
         name: "페이워치",
         description:
@@ -233,7 +233,7 @@ async function main() {
         compareStartupCount: 2200,
       },
       {
-        id: "sta-018",
+        id: "bca5c65b-7e20-41e2-831b-9843ed23929d",
         category: "핀테크",
         name: "두나무",
         description:
@@ -246,7 +246,7 @@ async function main() {
         compareStartupCount: 13000,
       },
       {
-        id: "sta-019",
+        id: "7228bcba-b1dc-483d-b436-891983f8ee2f",
         category: "핀테크",
         name: "웰컴페이먼츠",
         description:
@@ -259,7 +259,7 @@ async function main() {
         compareStartupCount: 5200,
       },
       {
-        id: "sta-020",
+        id: "0483cbbf-5b7e-4cca-a948-c126ee67376a",
         category: "핀테크",
         name: "쿼터백",
         description:
@@ -274,7 +274,7 @@ async function main() {
 
       // 헬스테크 (10개)
       {
-        id: "sta-021",
+        id: "a9135f99-b541-4364-8ea8-5bb9143a3a88",
         category: "헬스테크",
         name: "닥터나우",
         description:
@@ -287,7 +287,7 @@ async function main() {
         compareStartupCount: 8900,
       },
       {
-        id: "sta-022",
+        id: "a8cffb0b-8990-4c5f-b568-7109f82a27fa",
         category: "헬스테크",
         name: "메디블록",
         description:
@@ -300,7 +300,7 @@ async function main() {
         compareStartupCount: 4200,
       },
       {
-        id: "sta-023",
+        id: "73288b37-d2d1-476b-b5f3-aa7eec605db4",
         category: "헬스테크",
         name: "라이프시맨틱스",
         description:
@@ -313,7 +313,7 @@ async function main() {
         compareStartupCount: 3600,
       },
       {
-        id: "sta-024",
+        id: "b1c75983-5bd0-4af5-a699-994f5899362c",
         category: "헬스테크",
         name: "휴레이포지티브",
         description:
@@ -326,7 +326,7 @@ async function main() {
         compareStartupCount: 2900,
       },
       {
-        id: "sta-025",
+        id: "ea6561d3-b8f5-4a4a-8f10-c846889d384c",
         category: "헬스테크",
         name: "눔코리아",
         description:
@@ -339,7 +339,7 @@ async function main() {
         compareStartupCount: 7500,
       },
       {
-        id: "sta-026",
+        id: "3195b187-a0bc-421c-ba5f-a6763b2a0591",
         category: "헬스테크",
         name: "에이치알엠",
         description:
@@ -352,7 +352,7 @@ async function main() {
         compareStartupCount: 2100,
       },
       {
-        id: "sta-027",
+        id: "5a126ddf-a426-4a70-a6aa-90668056b3c3",
         category: "헬스테크",
         name: "인바디",
         description:
@@ -365,7 +365,7 @@ async function main() {
         compareStartupCount: 10100,
       },
       {
-        id: "sta-028",
+        id: "b41074fe-bf3c-43fa-ab5f-f2d3914cd7bd",
         category: "헬스테크",
         name: "올라케어",
         description:
@@ -378,7 +378,7 @@ async function main() {
         compareStartupCount: 2700,
       },
       {
-        id: "sta-029",
+        id: "4c2457bd-1a66-4ab1-98b7-b1c6bfbf8ca2",
         category: "헬스테크",
         name: "셀바스헬스케어",
         description:
@@ -391,7 +391,7 @@ async function main() {
         compareStartupCount: 5000,
       },
       {
-        id: "sta-030",
+        id: "ee764e01-add6-4916-a3b1-98a70e43b0aa",
         category: "헬스테크",
         name: "웰트",
         description:
@@ -406,7 +406,7 @@ async function main() {
 
       // 이커머스 (10개)
       {
-        id: "sta-031",
+        id: "65bbbf58-6f9b-44c7-bae8-ff857ce36e1f",
         category: "이커머스",
         name: "오늘의집",
         description:
@@ -419,7 +419,7 @@ async function main() {
         compareStartupCount: 13500,
       },
       {
-        id: "sta-032",
+        id: "8bbf1be7-fb56-4587-a730-55e6e1a8efae",
         category: "이커머스",
         name: "컬리",
         description:
@@ -432,7 +432,7 @@ async function main() {
         compareStartupCount: 15000,
       },
       {
-        id: "sta-033",
+        id: "fba83227-89e3-46ae-807e-3ada61f76b73",
         category: "이커머스",
         name: "발란",
         description:
@@ -445,7 +445,7 @@ async function main() {
         compareStartupCount: 8200,
       },
       {
-        id: "sta-034",
+        id: "fa01cea9-19a8-4860-83a6-fb6c0ed9d4f5",
         category: "이커머스",
         name: "지그재그",
         description:
@@ -458,7 +458,7 @@ async function main() {
         compareStartupCount: 9800,
       },
       {
-        id: "sta-035",
+        id: "5b88e57e-8ce8-434f-afbc-bbd44d40a6fc",
         category: "이커머스",
         name: "브랜디",
         description:
@@ -471,7 +471,7 @@ async function main() {
         compareStartupCount: 5100,
       },
       {
-        id: "sta-036",
+        id: "58f76b49-dc1e-4310-9752-42a1abc2e744",
         category: "이커머스",
         name: "무신사",
         description:
@@ -484,7 +484,7 @@ async function main() {
         compareStartupCount: 16000,
       },
       {
-        id: "sta-037",
+        id: "1ce9915e-6293-4727-8053-affcb1f84b0d",
         category: "이커머스",
         name: "크림",
         description:
@@ -497,7 +497,7 @@ async function main() {
         compareStartupCount: 8600,
       },
       {
-        id: "sta-038",
+        id: "c284cebf-709f-46d4-b058-a438984748d3",
         category: "이커머스",
         name: "버킷플레이스",
         description:
@@ -510,7 +510,7 @@ async function main() {
         compareStartupCount: 12000,
       },
       {
-        id: "sta-039",
+        id: "4ed783ee-7735-4644-9a81-c312f70f88ed",
         category: "이커머스",
         name: "트렌비",
         description:
@@ -523,7 +523,7 @@ async function main() {
         compareStartupCount: 6400,
       },
       {
-        id: "sta-040",
+        id: "865952bd-d593-443f-a575-854cd6b63a96",
         category: "이커머스",
         name: "마켓컬리",
         description:
@@ -538,7 +538,7 @@ async function main() {
 
       // AI·빅데이터 (10개)
       {
-        id: "sta-041",
+        id: "d2db485d-8593-4dd2-93fb-ea69447c7da2",
         category: "AI·빅데이터",
         name: "뤼튼테크놀로지스",
         description:
@@ -551,7 +551,7 @@ async function main() {
         compareStartupCount: 7300,
       },
       {
-        id: "sta-042",
+        id: "62fb8da0-f2bb-43af-ac43-459e1a8e909d",
         category: "AI·빅데이터",
         name: "업스테이지",
         description:
@@ -564,7 +564,7 @@ async function main() {
         compareStartupCount: 6500,
       },
       {
-        id: "sta-043",
+        id: "315e540a-53d9-4b52-947f-b15468b235cd",
         category: "AI·빅데이터",
         name: "스캐터랩",
         description:
@@ -577,7 +577,7 @@ async function main() {
         compareStartupCount: 5700,
       },
       {
-        id: "sta-044",
+        id: "7610818a-1deb-437d-bb33-1b801c527170",
         category: "AI·빅데이터",
         name: "수아랩",
         description:
@@ -590,7 +590,7 @@ async function main() {
         compareStartupCount: 3700,
       },
       {
-        id: "sta-045",
+        id: "407a83d0-41da-4d59-b08b-c166259833e2",
         category: "AI·빅데이터",
         name: "딥엑스",
         description:
@@ -603,7 +603,7 @@ async function main() {
         compareStartupCount: 4600,
       },
       {
-        id: "sta-046",
+        id: "b61e1273-6a35-43f4-950f-260cd5e1173e",
         category: "AI·빅데이터",
         name: "원티드랩",
         description:
@@ -616,7 +616,7 @@ async function main() {
         compareStartupCount: 8900,
       },
       {
-        id: "sta-047",
+        id: "300fd9c5-a8ec-450a-94ec-d9f6ed7c55f3",
         category: "AI·빅데이터",
         name: "마인즈랩",
         description:
@@ -629,7 +629,7 @@ async function main() {
         compareStartupCount: 4100,
       },
       {
-        id: "sta-048",
+        id: "ae43f28d-2a51-4812-9173-34991e17a28a",
         category: "AI·빅데이터",
         name: "코어닷투데이",
         description:
@@ -642,7 +642,7 @@ async function main() {
         compareStartupCount: 2800,
       },
       {
-        id: "sta-049",
+        id: "94f7aeb9-65da-4d45-871e-a676cbfe96bf",
         category: "AI·빅데이터",
         name: "루닛",
         description:
@@ -655,7 +655,7 @@ async function main() {
         compareStartupCount: 7800,
       },
       {
-        id: "sta-050",
+        id: "02aa8624-d7c3-446c-b320-95d35c9f71fa",
         category: "AI·빅데이터",
         name: "튜닙",
         description:
@@ -677,40 +677,40 @@ async function main() {
     data: [
       // 코드잇 투자 (5건)
       {
-        id: "inv-001",
-        startupId: "sta-001",
+        id: "dea565fc-9a5b-4199-8e9b-cf7ef39ac99a",
+        startupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
         investorName: "김연우",
         amount: 1000000000n,
         comment: "코드잇은 정말 훌륭한 기업입니다!",
         password: "1234",
       },
       {
-        id: "inv-002",
-        startupId: "sta-001",
+        id: "2b8a1a0e-0852-4d26-bf07-77f76ce66754",
+        startupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
         investorName: "이유지",
         amount: 900000000n,
         comment: "코드잇의 성장 가능성은 무궁무진합니다!",
         password: "1234",
       },
       {
-        id: "inv-003",
-        startupId: "sta-001",
+        id: "e83fb96d-a993-4e7b-9d81-e69cc8ee591b",
+        startupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
         investorName: "안다혜",
         amount: 800000000n,
         comment: "최고의 기업! 코드잇!",
         password: "1234",
       },
       {
-        id: "inv-004",
-        startupId: "sta-001",
+        id: "b582e3e9-69b5-40db-9e3c-8b7218ac7978",
+        startupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
         investorName: "신희성",
         amount: 700000000n,
         comment: "코드잇의 진출 분야는 무궁무진합니다.",
         password: "1234",
       },
       {
-        id: "inv-005",
-        startupId: "sta-001",
+        id: "68852c63-eb61-4d72-81ab-fd96467287af",
+        startupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
         investorName: "이용섭",
         amount: 600000000n,
         comment: "교육업계의 라이징 스타 코드잇을 신뢰합니다.",
@@ -718,24 +718,24 @@ async function main() {
       },
       // 토스 투자 (3건)
       {
-        id: "inv-006",
-        startupId: "sta-011",
+        id: "fb683554-ea00-46e8-a8c1-97716b9bea9a",
+        startupId: "f33242ed-6503-4537-aba5-b5918c045b85",
         investorName: "박지수",
         amount: 5000000000n,
         comment: "핀테크 시장의 절대 강자!",
         password: "1234",
       },
       {
-        id: "inv-007",
-        startupId: "sta-011",
+        id: "afde5dca-f184-438f-b9b4-edf14dfe3019",
+        startupId: "f33242ed-6503-4537-aba5-b5918c045b85",
         investorName: "최민준",
         amount: 3000000000n,
         comment: "토스의 성장세는 정말 놀랍습니다.",
         password: "1234",
       },
       {
-        id: "inv-008",
-        startupId: "sta-011",
+        id: "5657b964-81ed-41b0-8f4d-0784f0fd09f9",
+        startupId: "f33242ed-6503-4537-aba5-b5918c045b85",
         investorName: "한소희",
         amount: 2000000000n,
         comment: "금융 혁신을 이끄는 토스를 응원합니다.",
@@ -743,16 +743,16 @@ async function main() {
       },
       // 닥터나우 투자 (2건)
       {
-        id: "inv-009",
-        startupId: "sta-021",
+        id: "f52b3920-433a-46cb-a6a3-57f99e5f50ab",
+        startupId: "a9135f99-b541-4364-8ea8-5bb9143a3a88",
         investorName: "정현우",
         amount: 800000000n,
         comment: "헬스케어의 미래입니다!",
         password: "1234",
       },
       {
-        id: "inv-010",
-        startupId: "sta-021",
+        id: "c738db79-abb1-4227-826b-bc89825fb1ae",
+        startupId: "a9135f99-b541-4364-8ea8-5bb9143a3a88",
         investorName: "윤서연",
         amount: 500000000n,
         comment: "비대면 진료 시장을 선도할 기업!",
@@ -760,16 +760,16 @@ async function main() {
       },
       // 오늘의집 투자 (2건)
       {
-        id: "inv-011",
-        startupId: "sta-031",
+        id: "cb5ebe84-6f51-4e8e-bc7e-aa89839db619",
+        startupId: "65bbbf58-6f9b-44c7-bae8-ff857ce36e1f",
         investorName: "김태양",
         amount: 2000000000n,
         comment: "인테리어 시장의 혁신가!",
         password: "1234",
       },
       {
-        id: "inv-012",
-        startupId: "sta-031",
+        id: "faa60433-d915-4d4f-b4ad-ac8c343ed3a4",
+        startupId: "65bbbf58-6f9b-44c7-bae8-ff857ce36e1f",
         investorName: "이나은",
         amount: 1500000000n,
         comment: "콘텐츠 커머스의 최강자!",
@@ -777,16 +777,16 @@ async function main() {
       },
       // 뤼튼 투자 (2건)
       {
-        id: "inv-013",
-        startupId: "sta-041",
+        id: "fd1ddc9e-27b7-43b4-975c-ec4cb587fbc7",
+        startupId: "d2db485d-8593-4dd2-93fb-ea69447c7da2",
         investorName: "송민호",
         amount: 1000000000n,
         comment: "AI 글쓰기 시장의 선두주자!",
         password: "1234",
       },
       {
-        id: "inv-014",
-        startupId: "sta-041",
+        id: "99abc446-d65c-4765-b10c-666158d1c977",
+        startupId: "d2db485d-8593-4dd2-93fb-ea69447c7da2",
         investorName: "박세영",
         amount: 700000000n,
         comment: "생성형 AI 시대의 핵심 플레이어!",
@@ -794,16 +794,16 @@ async function main() {
       },
       // 루닛 투자 (2건)
       {
-        id: "inv-015",
-        startupId: "sta-049",
+        id: "a49a4a57-e472-4a82-8c76-38f6cd63cef8",
+        startupId: "94f7aeb9-65da-4d45-871e-a676cbfe96bf",
         investorName: "조은혜",
         amount: 1500000000n,
         comment: "의료 AI 글로벌 리더!",
         password: "1234",
       },
       {
-        id: "inv-016",
-        startupId: "sta-049",
+        id: "61f9d66b-3b2f-4c24-a8a2-475195ca3c5d",
+        startupId: "94f7aeb9-65da-4d45-871e-a676cbfe96bf",
         investorName: "강다인",
         amount: 1000000000n,
         comment: "루닛의 기술력은 세계 최고 수준!",
@@ -814,46 +814,169 @@ async function main() {
   });
   console.log("✅ 가상 투자 16건 생성");
 
-  // ─── 3. COMPARE_SELECTION (31개) ────────────────────────────────────────────
-  await prisma.compareSelection.createMany({
+  // ─── 3. SELECTION_LOG (31개) ─────────────────────────────────────────────────
+  await prisma.selectionLog.createMany({
     data: [
       // sta-001 코드잇 (5회 선택)
-      { id: "cs-001", myStartupId: "sta-001", compareStartupId: "sta-002" },
-      { id: "cs-002", myStartupId: "sta-001", compareStartupId: "sta-006" },
-      { id: "cs-003", myStartupId: "sta-001", compareStartupId: "sta-007" },
-      { id: "cs-004", myStartupId: "sta-001", compareStartupId: "sta-008" },
-      { id: "cs-005", myStartupId: "sta-001", compareStartupId: "sta-009" },
-      { id: "cs-006", myStartupId: "sta-001", compareStartupId: "sta-010" },
-      { id: "cs-007", myStartupId: "sta-001", compareStartupId: "sta-003" },
-      { id: "cs-008", myStartupId: "sta-001", compareStartupId: "sta-011" },
+      {
+        id: "c50313ea-17d1-4c36-9ce8-707da8bb180c",
+        myStartupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
+        compareStartupId: "293a7c9e-465c-4ec0-8d25-582e48498bce",
+      },
+      {
+        id: "9b709e50-d012-4b2e-a40b-6a0966072a76",
+        myStartupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
+        compareStartupId: "a1290781-9d3c-433a-b62d-cbde4b0b7220",
+      },
+      {
+        id: "546c57ec-c81d-48e4-bd27-b166e54a2179",
+        myStartupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
+        compareStartupId: "614e7dc0-9039-4af0-a5af-b8c7d8264c50",
+      },
+      {
+        id: "643bc9fa-ec99-4f96-b751-fa6fc40de4ed",
+        myStartupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
+        compareStartupId: "39eca81e-23ee-48d0-b79a-25b45ab493ac",
+      },
+      {
+        id: "055b1373-bf16-461f-a790-f727e51159a7",
+        myStartupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
+        compareStartupId: "2cadd71b-d5f5-4cbd-988d-594ad5a55cde",
+      },
+      {
+        id: "bf67840b-6607-42b7-a4cf-0070a5e3abbd",
+        myStartupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
+        compareStartupId: "4fec64d9-f481-426c-963a-5a6e8c99dc69",
+      },
+      {
+        id: "230c5ddb-732a-4b68-87fb-fb3063f9b220",
+        myStartupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
+        compareStartupId: "b08b6965-2ccb-4d53-ac00-fa36261ca74d",
+      },
+      {
+        id: "ced86ac0-48c9-4a8a-8fd2-b52c8f9e3604",
+        myStartupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
+        compareStartupId: "f33242ed-6503-4537-aba5-b5918c045b85",
+      },
       // sta-011 토스 (4회 선택)
-      { id: "cs-009", myStartupId: "sta-011", compareStartupId: "sta-012" },
-      { id: "cs-010", myStartupId: "sta-011", compareStartupId: "sta-013" },
-      { id: "cs-011", myStartupId: "sta-011", compareStartupId: "sta-014" },
-      { id: "cs-012", myStartupId: "sta-011", compareStartupId: "sta-018" },
-      { id: "cs-013", myStartupId: "sta-011", compareStartupId: "sta-019" },
-      { id: "cs-014", myStartupId: "sta-011", compareStartupId: "sta-020" },
-      { id: "cs-015", myStartupId: "sta-011", compareStartupId: "sta-001" },
+      {
+        id: "35b333ab-55e8-4191-b0dd-53971992648d",
+        myStartupId: "f33242ed-6503-4537-aba5-b5918c045b85",
+        compareStartupId: "4b694ea2-9f37-4ed7-bc68-5f5ac0521c4a",
+      },
+      {
+        id: "2ff1a929-36b8-49a9-b323-50c839a8f825",
+        myStartupId: "f33242ed-6503-4537-aba5-b5918c045b85",
+        compareStartupId: "cf28c06c-4740-4291-858b-c3770227109a",
+      },
+      {
+        id: "822e3e7c-6b55-4b4d-a373-bf00dde78e69",
+        myStartupId: "f33242ed-6503-4537-aba5-b5918c045b85",
+        compareStartupId: "7a70a544-5ff0-4ff8-9c0d-e2ad3ee5f6a7",
+      },
+      {
+        id: "e00a60e1-a66a-43c3-b6ed-7b28ab4ee3e7",
+        myStartupId: "f33242ed-6503-4537-aba5-b5918c045b85",
+        compareStartupId: "bca5c65b-7e20-41e2-831b-9843ed23929d",
+      },
+      {
+        id: "7cb4d10b-5102-4ca1-a568-9ae3efb11a6f",
+        myStartupId: "f33242ed-6503-4537-aba5-b5918c045b85",
+        compareStartupId: "7228bcba-b1dc-483d-b436-891983f8ee2f",
+      },
+      {
+        id: "bbff1db9-70fe-4542-8310-eb6df9295987",
+        myStartupId: "f33242ed-6503-4537-aba5-b5918c045b85",
+        compareStartupId: "0483cbbf-5b7e-4cca-a948-c126ee67376a",
+      },
+      {
+        id: "695cc6a3-6fb8-4254-88c9-89cf74cd0835",
+        myStartupId: "f33242ed-6503-4537-aba5-b5918c045b85",
+        compareStartupId: "23ccbb62-8274-4007-b74e-0113aa34a26c",
+      },
       // sta-031 오늘의집 (3회 선택)
-      { id: "cs-016", myStartupId: "sta-031", compareStartupId: "sta-032" },
-      { id: "cs-017", myStartupId: "sta-031", compareStartupId: "sta-033" },
-      { id: "cs-018", myStartupId: "sta-031", compareStartupId: "sta-034" },
-      { id: "cs-019", myStartupId: "sta-031", compareStartupId: "sta-036" },
-      { id: "cs-020", myStartupId: "sta-031", compareStartupId: "sta-037" },
-      { id: "cs-021", myStartupId: "sta-031", compareStartupId: "sta-038" },
+      {
+        id: "f77873b1-4d59-4f3b-86e9-4baa5a7f8154",
+        myStartupId: "65bbbf58-6f9b-44c7-bae8-ff857ce36e1f",
+        compareStartupId: "8bbf1be7-fb56-4587-a730-55e6e1a8efae",
+      },
+      {
+        id: "cf413868-d2a3-4ee3-9d80-b434a592b6c4",
+        myStartupId: "65bbbf58-6f9b-44c7-bae8-ff857ce36e1f",
+        compareStartupId: "fba83227-89e3-46ae-807e-3ada61f76b73",
+      },
+      {
+        id: "b7e91035-6547-4a57-b29e-f4b1d2d5ef30",
+        myStartupId: "65bbbf58-6f9b-44c7-bae8-ff857ce36e1f",
+        compareStartupId: "fa01cea9-19a8-4860-83a6-fb6c0ed9d4f5",
+      },
+      {
+        id: "8683c081-0a3c-436e-a036-d9fbbe622545",
+        myStartupId: "65bbbf58-6f9b-44c7-bae8-ff857ce36e1f",
+        compareStartupId: "58f76b49-dc1e-4310-9752-42a1abc2e744",
+      },
+      {
+        id: "0fe74c9e-0fc1-4935-949e-d090c5a284fc",
+        myStartupId: "65bbbf58-6f9b-44c7-bae8-ff857ce36e1f",
+        compareStartupId: "1ce9915e-6293-4727-8053-affcb1f84b0d",
+      },
+      {
+        id: "0e950c07-c5b4-4652-93a2-807ac029dd02",
+        myStartupId: "65bbbf58-6f9b-44c7-bae8-ff857ce36e1f",
+        compareStartupId: "c284cebf-709f-46d4-b058-a438984748d3",
+      },
       // sta-041 뤼튼테크놀로지스 (2회 선택)
-      { id: "cs-022", myStartupId: "sta-041", compareStartupId: "sta-042" },
-      { id: "cs-023", myStartupId: "sta-041", compareStartupId: "sta-043" },
-      { id: "cs-024", myStartupId: "sta-041", compareStartupId: "sta-044" },
-      { id: "cs-025", myStartupId: "sta-041", compareStartupId: "sta-049" },
-      { id: "cs-026", myStartupId: "sta-041", compareStartupId: "sta-045" },
+      {
+        id: "66298aee-1c4d-4669-bce7-7a068eb32790",
+        myStartupId: "d2db485d-8593-4dd2-93fb-ea69447c7da2",
+        compareStartupId: "62fb8da0-f2bb-43af-ac43-459e1a8e909d",
+      },
+      {
+        id: "ff5aa74d-4a9a-4b7e-bcd9-70c1bd57476f",
+        myStartupId: "d2db485d-8593-4dd2-93fb-ea69447c7da2",
+        compareStartupId: "315e540a-53d9-4b52-947f-b15468b235cd",
+      },
+      {
+        id: "b72d1e31-98df-4ea3-82b3-c005bed8ff23",
+        myStartupId: "d2db485d-8593-4dd2-93fb-ea69447c7da2",
+        compareStartupId: "7610818a-1deb-437d-bb33-1b801c527170",
+      },
+      {
+        id: "a534bc89-3b24-493d-a625-2eadf11d5efb",
+        myStartupId: "d2db485d-8593-4dd2-93fb-ea69447c7da2",
+        compareStartupId: "94f7aeb9-65da-4d45-871e-a676cbfe96bf",
+      },
+      {
+        id: "a1694507-1db4-4b00-b241-4e6c096c7183",
+        myStartupId: "d2db485d-8593-4dd2-93fb-ea69447c7da2",
+        compareStartupId: "407a83d0-41da-4d59-b08b-c166259833e2",
+      },
       // sta-021 닥터나우 (1회 선택)
-      { id: "cs-027", myStartupId: "sta-021", compareStartupId: "sta-022" },
-      { id: "cs-028", myStartupId: "sta-021", compareStartupId: "sta-023" },
-      { id: "cs-029", myStartupId: "sta-021", compareStartupId: "sta-024" },
-      { id: "cs-030", myStartupId: "sta-021", compareStartupId: "sta-025" },
-      { id: "cs-031", myStartupId: "sta-021", compareStartupId: "sta-027" },
-      // sta-006 팀스파르타: 0회 선택 (레코드 없음) ✅
+      {
+        id: "13c4114f-892a-453d-8f1f-9830b425cac4",
+        myStartupId: "a9135f99-b541-4364-8ea8-5bb9143a3a88",
+        compareStartupId: "a8cffb0b-8990-4c5f-b568-7109f82a27fa",
+      },
+      {
+        id: "00f5edc5-e1d8-4e3c-beae-68894dc586a4",
+        myStartupId: "a9135f99-b541-4364-8ea8-5bb9143a3a88",
+        compareStartupId: "73288b37-d2d1-476b-b5f3-aa7eec605db4",
+      },
+      {
+        id: "6cbdb5e4-e650-4f50-81d9-836dca9e2a25",
+        myStartupId: "a9135f99-b541-4364-8ea8-5bb9143a3a88",
+        compareStartupId: "b1c75983-5bd0-4af5-a699-994f5899362c",
+      },
+      {
+        id: "81209e31-f86b-4c17-8631-9acca5ebb9b1",
+        myStartupId: "a9135f99-b541-4364-8ea8-5bb9143a3a88",
+        compareStartupId: "ea6561d3-b8f5-4a4a-8f10-c846889d384c",
+      },
+      {
+        id: "e35e607a-df7a-46bb-8b9d-a6ea1385e3c7",
+        myStartupId: "a9135f99-b541-4364-8ea8-5bb9143a3a88",
+        compareStartupId: "5a126ddf-a426-4a70-a6aa-90668056b3c3",
+      },
     ],
     skipDuplicates: true,
   });

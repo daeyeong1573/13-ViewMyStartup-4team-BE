@@ -22,8 +22,8 @@ model Startup {
   updatedAt           DateTime @updatedAt @map("updated_at")
 
   virtualInvestments VirtualInvestment[]
-  mySelections       CompareSelection[]  @relation("MyStartup")
-  compareSelections  CompareSelection[]  @relation("CompareStartup")
+  mySelections       SelectionLog[]      @relation("MyStartup")
+  compareSelections  SelectionLog[]      @relation("CompareStartup")
 
   @@index([totalInvestment])
   @@index([revenue])
@@ -50,14 +50,14 @@ model VirtualInvestment {
   @@map("virtual_investment")
 }
 
-model CompareSelection {
+model SelectionLog {
   id               String   @id @default(uuid())
   myStartupId      String   @map("my_startup_id")
   compareStartupId String   @map("compare_startup_id")
-  createdAt        DateTime @default(now()) @map("create_at")
+  createdAt        DateTime @default(now()) @map("created_at")
 
   myStartup      Startup @relation("MyStartup", fields: [myStartupId], references: [id])
   compareStartup Startup @relation("CompareStartup", fields: [compareStartupId], references: [id])
 
-  @@map("compare_selection")
+  @@map("selection_log")
 }

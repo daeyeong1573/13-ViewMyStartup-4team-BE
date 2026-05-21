@@ -31,13 +31,13 @@ CREATE TABLE "virtual_investment" (
 );
 
 -- CreateTable
-CREATE TABLE "compare_selection" (
+CREATE TABLE "selection_log" (
     "id" TEXT NOT NULL,
     "my_startup_id" TEXT NOT NULL,
     "compare_startup_id" TEXT NOT NULL,
-    "create_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "compare_selection_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "selection_log_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -65,7 +65,7 @@ CREATE INDEX "virtual_investment_startup_id_idx" ON "virtual_investment"("startu
 ALTER TABLE "virtual_investment" ADD CONSTRAINT "virtual_investment_startup_id_fkey" FOREIGN KEY ("startup_id") REFERENCES "startup"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "compare_selection" ADD CONSTRAINT "compare_selection_my_startup_id_fkey" FOREIGN KEY ("my_startup_id") REFERENCES "startup"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "selection_log" ADD CONSTRAINT "selection_log_my_startup_id_fkey" FOREIGN KEY ("my_startup_id") REFERENCES "startup"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "compare_selection" ADD CONSTRAINT "compare_selection_compare_startup_id_fkey" FOREIGN KEY ("compare_startup_id") REFERENCES "startup"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "selection_log" ADD CONSTRAINT "selection_log_compare_startup_id_fkey" FOREIGN KEY ("compare_startup_id") REFERENCES "startup"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
