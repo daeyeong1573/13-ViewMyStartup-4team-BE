@@ -1,4 +1,17 @@
 @local_url = http://localhost:3000
 
 ###GET select my company
-GET {{local_url}}/startups/recent-my
+GET {{local_url}}/startups/
+
+
+
+
+###Post compare
+## 해당 api로 유저가 선택한 비교 기업 및, 선택 기업의 카운트가 증가합니다.
+POST {{local_url}}/compare
+Content-Type: application/json
+
+{
+  "myStartupId": "614e7dc0-9039-4af0-a5af-b8c7d8264c50",
+  "compareStartupIds": ["b08b6965-2ccb-4d53-ac00-fa36261ca74d", "8cde5c8a-c89f-4b4d-9339-68e4f9d301ab", "cc444e49-6b6f-4830-bf57-271e8f851c0f"]
+}
