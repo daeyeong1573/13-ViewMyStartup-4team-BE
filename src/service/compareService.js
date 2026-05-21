@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid";
 import prisma from "../lib/prisma.js";
 
 export async function saveCompareSelection({ myStartupId, compareStartupIds }) {
