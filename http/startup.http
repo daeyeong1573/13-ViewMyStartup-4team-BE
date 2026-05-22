@@ -38,3 +38,13 @@ Content-Type: application/json
 {
   "password": "1234"
 }
+
+###Patch Investment 비밀 번호 틀렸을 때
+PATCH {{local_url}}/investments/{{investment_test_id}}
+Content-Type: application/json
+
+{
+  "amount": "1000000222",
+  "comment": "코드잇! 정말 좋아여!",
+  "password": "1121"
+}
