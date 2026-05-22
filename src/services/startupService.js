@@ -89,11 +89,12 @@ export async function getStartupDetailWithInvestments({ id, page, limit }) {
   });
 
   //순위 매기기
-  const formattedInvestments = investments.map((i, index) => ({
-    id: i.id,
-    investorName: i.investorName,
-    amount: i.amount.toString(),
-    comment: i.comment,
+  const formattedInvestments = investments.map((investment, index) => ({
+    id: investment.id,
+    investorName: investment.investorName,
+    amount: investment.amount.toString(),
+    comment: investment.comment,
+    createdAt: investment.createdAt,
     rank: skip + index + 1,
   }));
 
