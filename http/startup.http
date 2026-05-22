@@ -1,6 +1,7 @@
 @local_url = http://localhost:3000
 //코드잇 test id
 @test_id = 23ccbb62-8274-4007-b74e-0113aa34a26c
+@investment_test_id = dea565fc-9a5b-4199-8e9b-cf7ef39ac99a
 
 ###GET select my company
 GET {{local_url}}/startups/
@@ -18,4 +19,22 @@ Content-Type: application/json
 {
   "myStartupId": "614e7dc0-9039-4af0-a5af-b8c7d8264c50",
   "compareStartupIds": ["b08b6965-2ccb-4d53-ac00-fa36261ca74d", "8cde5c8a-c89f-4b4d-9339-68e4f9d301ab", "cc444e49-6b6f-4830-bf57-271e8f851c0f"]
+}
+
+###Patch Investment
+PATCH {{local_url}}/investments/{{investment_test_id}}
+Content-Type: application/json
+
+{
+  "amount": "1000000222",
+  "comment": "코드잇! 정말 좋아여!",
+  "password": "1234"
+}
+
+###Patch Investment 아무 것도 수정하지 않을 때
+PATCH {{local_url}}/investments/{{investment_test_id}}
+Content-Type: application/json
+
+{
+  "password": "1234"
 }
