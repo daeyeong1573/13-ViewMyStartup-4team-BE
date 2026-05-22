@@ -1,8 +1,12 @@
 @local_url = http://localhost:3000
+//코드잇 test id
+@test_id = 23ccbb62-8274-4007-b74e-0113aa34a26c
 
 ###GET select my company
 GET {{local_url}}/startups/
 
+###GET Company with InvestMents Info
+GET {{local_url}}/startups/{{test_id}}
 
 
 

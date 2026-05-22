@@ -2,8 +2,15 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import { validate } from "./middlewares/validate.js";
-import { startupListQuerySchema } from "./schemas/startupSchema.js";
-import { listStartups } from "./controllers/startupController.js";
+import {
+  investmentQuerySchema,
+  startupListQuerySchema,
+  startupParamsSchema,
+} from "./schemas/startupSchema.js";
+import {
+  listStartups,
+  listStartupInvestments,
+} from "./controllers/startupController.js";
 import { compareSelectionSchema } from "./schemas/compareSchema.js";
 import { createCompareSelection } from "./controllers/compareController.js";
 
@@ -18,6 +25,14 @@ app.use(express.json());
 
 // Get Startup
 app.get("/startups", validate(startupListQuerySchema, "query"), listStartups);
+
+// Get Startup details
+app.get(
+  "/startups/:id",
+  validate(startupParamsSchema, "params"),
+  validate(investmentQuerySchema, "query"),
+  listStartupInvestments,
+);
 
 //Post compare
 app.post("/compare", validate(compareSelectionSchema), createCompareSelection);
