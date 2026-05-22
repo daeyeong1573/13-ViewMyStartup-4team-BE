@@ -15,7 +15,8 @@ export const validate = (schema, source = "body") => {
       });
     }
 
-    req.validatedData = result.data;
+    //기존 validatedData가 있으면 유지, 새로운 데이터는 추가
+    req.validatedData = { ...req.validatedData, ...result.data };
     next();
   };
 };
