@@ -18,6 +18,7 @@ import {
   updateInvestmentParamsSchema,
 } from "./schemas/investmentSchema.js";
 import { patchInvestment } from "./controllers/investmentController.js";
+import { getInvestmentStatus } from "./controllers/investmentStatusController.js";
 
 const envFile = `.env.${process.env.NODE_ENV || "development"}`;
 dotenv.config({ path: envFile });
@@ -30,6 +31,9 @@ app.use(express.json());
 
 // Get Startup
 app.get("/startups", validate(startupListQuerySchema, "query"), listStartups);
+
+// Get InvestmentStatus
+app.get("/investments", getInvestmentStatus);
 
 // Get Startup details
 app.get(
