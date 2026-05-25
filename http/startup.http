@@ -48,3 +48,11 @@ Content-Type: application/json
   "comment": "코드잇! 정말 좋아여!",
   "password": "1121"
 }
+
+###Delete Investment
+DELETE {{local_url}}/investments/{{investment_test_id}}
+Content-Type: application/json
+
+{
+  "password": "1234"
+}
