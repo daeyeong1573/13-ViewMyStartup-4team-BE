@@ -18,7 +18,6 @@ import {
   investmentParamsSchema,
   updateInvestmentBodySchema,
 } from "./schemas/investmentSchema.js";
-import { patchInvestment } from "./controllers/investmentController.js";
 import { getInvestmentStatus } from "./controllers/investmentStatusController.js";
 import {
   deleteInvestment,
