@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import cors from "cors";
 import { validate } from "./middlewares/validate.js";
@@ -6,6 +7,11 @@ import { startupListQuerySchema } from "./schemas/startupSchema.js";
 import { listStartups } from "./controllers/startupController.js";
 import { compareSelectionSchema } from "./schemas/compareSchema.js";
 import { createCompareSelection } from "./controllers/compareController.js";
+import { handleGetCompareStatus } from "./controllers/compareStatusController.js";
+
+BigInt.prototype.toJSON = function () {
+  return Number(this.toString());
+};
 
 const envFile = `.env.${process.env.NODE_ENV || "development"}`;
 dotenv.config({ path: envFile });
@@ -21,6 +27,9 @@ app.get("/startups", validate(startupListQuerySchema, "query"), listStartups);
 
 //Post compare
 app.post("/compare", validate(compareSelectionSchema), createCompareSelection);
+
+// Get compareStatus
+app.get("/compare/status", handleGetCompareStatus);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
