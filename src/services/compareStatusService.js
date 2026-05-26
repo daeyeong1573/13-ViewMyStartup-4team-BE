@@ -12,9 +12,9 @@ export const getCompareStatusData = async ({ page, limit, orderBy }) => {
   if (orderBy === "myStartupCount_asc") {
     orderByCondition = { myStartupCount: "asc" };
   } else if (orderBy === "investmentAmount_desc") {
-    orderByCondition = { investmentAmount: "desc" };
+    orderByCondition = { totalInvestment: "desc" };
   } else if (orderBy === "investmentAmount_asc") {
-    orderByCondition = { investmentAmount: "asc" };
+    orderByCondition = { totalInvestment: "asc" };
   }
 
   const [total, dataResult] = await prisma.$transaction([
