@@ -1,58 +1,62 @@
 import prisma from "../lib/prisma.js";
 
-// [GET] 투자 현황판 조회 서비스
+// [GET] 투자 현황판 조회
 export async function getInvestmentStatusList({ page, limit, orderBy }) {
   const skip = (page - 1) * limit;
 
-  // 1. DB 조회
-  let startups = await prisma.startup.findMany({
+  // DB 조회
+  const startups = await prisma.startup.findMany({
     include: {
       virtualInvestments: true,
     },
   });
 
-  // 2. 데이터 가공 및 BigInt -> Number 변환
-  startups = startups.map((startup) => {
-    const virtualInvestmentTotal = startup.virtualInvestments.reduce(
-      (sum, investment) => sum + Number(investment.amount || 0),
-      0,
-    );
-
+  // 데이터 가공 및 형변환
+  const formattedData = startups.map((startup) => {
+    // 투자 내역(virtualInvestments) 목록
     const formattedVirtualInvestments = startup.virtualInvestments.map(
       (inv) => ({
         ...inv,
-        id: Number(inv.id),
         amount: Number(inv.amount),
       }),
     );
 
+    // 가상 투자 금액 합산
+    const virtualInvestmentTotalBigInt = startup.virtualInvestments.reduce(
+      (sum, inv) => {
+        return sum + inv.amount;
+      },
+      0n,
+    );
+
     return {
       ...startup,
+      virtualInvestmentTotal: Number(virtualInvestmentTotalBigInt),
       totalInvestment: Number(startup.totalInvestment),
       revenue: Number(startup.revenue),
-      virtualInvestmentTotal: Number(virtualInvestmentTotal),
       virtualInvestments: formattedVirtualInvestments,
     };
   });
 
-  // 3. 동적 정렬 로직
-  if (orderBy === "virtualInvestment_desc") {
-    startups.sort(
-      (a, b) => b.virtualInvestmentTotal - a.virtualInvestmentTotal,
-    );
-  } else if (orderBy === "virtualInvestment_asc") {
-    startups.sort(
-      (a, b) => a.virtualInvestmentTotal - b.virtualInvestmentTotal,
-    );
-  } else if (orderBy === "totalInvestment_desc") {
-    startups.sort((a, b) => b.totalInvestment - a.totalInvestment);
-  } else if (orderBy === "totalInvestment_asc") {
-    startups.sort((a, b) => a.totalInvestment - b.totalInvestment);
+  // 동적 정렬
+  const investmentSortStrategies = {
+    virtualInvestment_desc: (a, b) =>
+      b.virtualInvestmentTotal - a.virtualInvestmentTotal,
+    virtualInvestment_asc: (a, b) =>
+      a.virtualInvestmentTotal - b.virtualInvestmentTotal,
+    totalInvestment_desc: (a, b) => b.totalInvestment - a.totalInvestment,
+    totalInvestment_asc: (a, b) => a.totalInvestment - b.totalInvestment,
+  };
+
+  const currentSortFn = investmentSortStrategies[orderBy];
+
+  if (currentSortFn) {
+    formattedData.sort(currentSortFn);
   }
 
-  // 4. 페이지네이션 데이터 분할
-  const totalCount = startups.length;
-  const paginatedStartups = startups.slice(skip, skip + limit);
+  // 페이지네이션
+  const totalCount = formattedData.length;
+  const paginatedStartups = formattedData.slice(skip, skip + limit);
 
   return {
     data: paginatedStartups,
