@@ -28,7 +28,6 @@ export async function getInvestmentStatusList({ page, limit, orderBy }) {
 
     return {
       ...startup,
-      id: Number(startup.id),
       totalInvestment: Number(startup.totalInvestment),
       revenue: Number(startup.revenue),
       virtualInvestmentTotal: Number(virtualInvestmentTotal),
