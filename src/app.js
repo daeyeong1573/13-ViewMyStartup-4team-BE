@@ -14,10 +14,14 @@ import {
 import { compareSelectionSchema } from "./schemas/compareSchema.js";
 import { createCompareSelection } from "./controllers/compareController.js";
 import {
+  deleteInvestmentBodySchema,
+  investmentParamsSchema,
   updateInvestmentBodySchema,
-  updateInvestmentParamsSchema,
 } from "./schemas/investmentSchema.js";
-import { patchInvestment } from "./controllers/investmentController.js";
+import {
+  deleteInvestment,
+  patchInvestment,
+} from "./controllers/investmentController.js";
 
 const envFile = `.env.${process.env.NODE_ENV || "development"}`;
 dotenv.config({ path: envFile });
@@ -45,9 +49,17 @@ app.post("/compare", validate(compareSelectionSchema), createCompareSelection);
 //Patch investments
 app.patch(
   "/investments/:id",
-  validate(updateInvestmentParamsSchema, "params"),
+  validate(investmentParamsSchema, "params"),
   validate(updateInvestmentBodySchema, "body"),
   patchInvestment,
+);
+
+//Delete investments
+app.delete(
+  "/investments/:id",
+  validate(investmentParamsSchema, "params"),
+  validate(deleteInvestmentBodySchema, "body"),
+  deleteInvestment,
 );
 
 const PORT = process.env.PORT || 3000;
