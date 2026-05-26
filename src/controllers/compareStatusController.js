@@ -1,4 +1,4 @@
-import { getCompareStatusData } from "../service/compareStatusService.js";
+import { getCompareStatusData } from "../services/compareStatusService.js";
 
 export const handleGetCompareStatus = async (req, res) => {
   try {
