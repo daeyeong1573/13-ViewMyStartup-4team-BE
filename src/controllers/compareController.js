@@ -1,4 +1,4 @@
-import { saveCompareSelection } from "../service/compareService.js";
+import { saveCompareSelection } from "../services/compareService.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
 export const createCompareSelection = asyncHandler(async (req, res) => {
