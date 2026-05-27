@@ -18,9 +18,11 @@ import {
   investmentParamsSchema,
   updateInvestmentBodySchema,
 } from "./schemas/investmentSchema.js";
+
 import {
   deleteInvestment,
   patchInvestment,
+  getInvestmentStatus,
 } from "./controllers/investmentController.js";
 
 const envFile = `.env.${process.env.NODE_ENV || "development"}`;
@@ -34,6 +36,9 @@ app.use(express.json());
 
 // Get Startup
 app.get("/startups", validate(startupListQuerySchema, "query"), listStartups);
+
+// Get InvestmentStatus
+app.get("/investments", getInvestmentStatus);
 
 // Get Startup details
 app.get(
