@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-dotenv.config();
 import express from "express";
 import cors from "cors";
 import { validate } from "./middlewares/validate.js";
@@ -15,10 +14,6 @@ import {
 import { compareSelectionSchema } from "./schemas/compareSchema.js";
 import { createCompareSelection } from "./controllers/compareController.js";
 import { handleGetCompareStatus } from "./controllers/compareStatusController.js";
-
-BigInt.prototype.toJSON = function () {
-  return Number(this.toString());
-};
 
 import {
   deleteInvestmentBodySchema,
