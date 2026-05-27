@@ -56,3 +56,6 @@ Content-Type: application/json
 {
   "password": "1234"
 }
+
+### 투자 현황 리스트 조회 테스트
+GET {{local_url}}/investments

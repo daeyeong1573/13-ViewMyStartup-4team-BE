@@ -1,0 +1,29 @@
+# http/compareStatus.http 파일 내용
+
+@local_url = http://localhost:3000
+
+### 1. 나의 기업 선택 횟수 높은순 조회 (기본값)
+# 대시보드 화면 진입 시 처음 보여질 기본 정렬 리스트입니다.
+GET {{local_url}}/startups?orderBy=myStartupCount_desc&page=1&limit=5
+Content-Type: application/json
+
+###
+
+### 2. 나의 기업 선택 횟수 낮은순 조회
+# 드롭다운에서 '선택 횟수 낮은순'을 선택했을 때 통신할 API입니다.
+GET {{local_url}}/startups?orderBy=myStartupCount_asc&page=1&limit=5
+Content-Type: application/json
+
+###
+
+### 3. 실제 누적 투자 금액 높은순 조회 (BigInt 검증 완료)
+# 드롭다운에서 '투자 금액 높은순'을 골랐을 때 통신하며, 투자 금액이 제일 높은 기업이 1위로 정렬됩니다.
+GET {{local_url}}/startups?orderBy=investmentAmount_desc&page=1&limit=5
+Content-Type: application/json
+
+###
+
+### 4. 실제 누적 투자 금액 낮은순 조회
+# 드롭다운에서 '투자 금액 낮은순'을 선택했을 때 통신할 API입니다.
+GET {{local_url}}/startups?orderBy=investmentAmount_asc&page=1&limit=5
+Content-Type: application/json
