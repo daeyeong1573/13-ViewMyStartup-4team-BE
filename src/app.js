@@ -18,10 +18,11 @@ import {
   investmentParamsSchema,
   updateInvestmentBodySchema,
 } from "./schemas/investmentSchema.js";
-import { getInvestmentStatus } from "./controllers/investmentStatusController.js";
+
 import {
   deleteInvestment,
   patchInvestment,
+  getInvestmentStatus,
 } from "./controllers/investmentController.js";
 
 const envFile = `.env.${process.env.NODE_ENV || "development"}`;
