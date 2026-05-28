@@ -14,7 +14,7 @@ export async function getStartups({ search, page, limit }) {
       where,
       skip,
       take: limit,
-      orderBy: { createdAt: "desc" },
+      orderBy: [{ createdAt: "desc" }, { name: "asc" }],
       select: {
         id: true,
         name: true,
