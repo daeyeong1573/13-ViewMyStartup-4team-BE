@@ -16,10 +16,6 @@ import { compareSelectionSchema } from "./schemas/compareSchema.js";
 import { createCompareSelection } from "./controllers/compareController.js";
 import { handleGetCompareStatus } from "./controllers/compareStatusController.js";
 
-BigInt.prototype.toJSON = function () {
-  return Number(this.toString());
-};
-
 import {
   deleteInvestmentBodySchema,
   investmentParamsSchema,

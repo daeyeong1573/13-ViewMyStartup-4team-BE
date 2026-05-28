@@ -23,3 +23,7 @@ export class ConflictError extends AppError {
     super(message, 409);
   }
 }
+
+BigInt.prototype.toJSON = function () {
+  return Number(this.toString());
+};
