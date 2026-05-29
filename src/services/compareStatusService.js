@@ -63,7 +63,7 @@ export const getCompareStatusData = async ({ page, limit, orderBy }) => {
       },
     };
   } catch (error) {
-    console.error("❌ Prisma DB 조회 중 에러 발생:", error);
+    console.error("DB 조회 중 에러 발생:", error);
     throw error;
   }
 };
