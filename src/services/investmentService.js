@@ -16,6 +16,14 @@ export async function createInvestment({
       comment,
       password,
     },
+    select: {
+      id: true,
+      startupId: true,
+      investorName: true,
+      amount: true,
+      comment: true,
+      createdAt: true,
+    },
   });
 
   return {
