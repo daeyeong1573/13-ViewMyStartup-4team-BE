@@ -24,7 +24,7 @@ export async function createInvestment({
     investorName: createdData.investorName,
     amount: createdData.amount.toString(),
     comment: createdData.comment,
-    password: createdData.password,
+    createdAt: createdData.createdAt,
   };
 }
 

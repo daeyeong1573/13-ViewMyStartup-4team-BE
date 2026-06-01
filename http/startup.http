@@ -27,7 +27,7 @@ Content-Type: application/json
 
   {
     "startupId": "23ccbb62-8274-4007-b74e-0113aa34a26c",
-    "investorName": "김은진",
+    "investorName": "김은",
     "amount": 3000000000,
     "comment": "코드잇은 정말 최고 기업입니다!",
     "password": "1234"
