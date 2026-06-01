@@ -1,6 +1,33 @@
 import prisma from "../lib/prisma.js";
 import { NotFoundError, ValidationError } from "../utils/errors.js";
 
+export async function createInvestment({
+  startupId,
+  investorName,
+  amount,
+  comment,
+  password,
+}) {
+  const createdData = await prisma.virtualInvestment.create({
+    data: {
+      startupId,
+      investorName,
+      amount: amount.toString(),
+      comment,
+      password,
+    },
+  });
+
+  return {
+    id: createdData.id,
+    startupId: createdData.startupId,
+    investorName: createdData.investorName,
+    amount: createdData.amount.toString(),
+    comment: createdData.comment,
+    password: createdData.password,
+  };
+}
+
 export async function updateInvestment(id, { amount, comment, password }) {
   const investment = await prisma.virtualInvestment.findUnique({
     where: { id },
