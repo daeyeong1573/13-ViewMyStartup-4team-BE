@@ -48,7 +48,7 @@ export async function getStartups({ search, page, limit }) {
 export async function getStartupDetailWithInvestments({ id, page, limit }) {
   const skip = (page - 1) * limit;
 
-  const [startup, totalInvestmentCount] = await Promise.all([
+  const [startup, totalInvestmentCount, aggregateResult] = await Promise.all([
     prisma.startup.findUnique({
       where: { id },
       select: {
@@ -63,6 +63,12 @@ export async function getStartupDetailWithInvestments({ id, page, limit }) {
       },
     }),
     prisma.virtualInvestment.count({ where: { startupId: id } }),
+    prisma.virtualInvestment.aggregate({
+      where: { startupId: id },
+      _sum: {
+        amount: true,
+      },
+    }),
   ]);
 
   if (!startup) {
@@ -98,10 +104,14 @@ export async function getStartupDetailWithInvestments({ id, page, limit }) {
     rank: skip + index + 1,
   }));
 
+  //합계가 없을 경우
+  const virtualInvestmentTotal = aggregateResult._sum.amount || 0n;
+
   return {
     ...startup,
     totalInvestment: startup.totalInvestment.toString(),
     revenue: startup.revenue.toString(),
+    virtualInvestmentTotal: virtualInvestmentTotal.toString(),
     investmentList: {
       data: formattedInvestments,
       pagination: {
