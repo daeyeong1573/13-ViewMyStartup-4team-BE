@@ -3,7 +3,21 @@ import {
   removeInvestment,
   updateInvestment,
   getInvestmentStatusList,
+  createInvestment,
 } from "../services/investmentService.js";
+
+export const postInvestment = asyncHandler(async (req, res) => {
+  const { startupId, investorName, amount, comment, password } =
+    req.validatedData;
+  const result = await createInvestment({
+    startupId,
+    investorName,
+    amount,
+    comment,
+    password,
+  });
+  res.status(201).json(result);
+});
 
 export const patchInvestment = asyncHandler(async (req, res) => {
   const { id, amount, comment, password } = req.validatedData;

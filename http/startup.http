@@ -27,6 +27,18 @@ Content-Type: application/json
   "compareStartupIds": ["b08b6965-2ccb-4d53-ac00-fa36261ca74d", "8cde5c8a-c89f-4b4d-9339-68e4f9d301ab", "cc444e49-6b6f-4830-bf57-271e8f851c0f"]
 }
 
+###Create Investment
+POST {{local_url}}/investments
+Content-Type: application/json
+
+  {
+    "startupId": "23ccbb62-8274-4007-b74e-0113aa34a26c",
+    "investorName": "김진",
+    "amount": 3000000000,
+    "comment": "코드잇은 정말 최고 기업입니다!",
+    "password": "1234"
+  }
+
 ###Patch Investment
 PATCH {{local_url}}/investments/{{investment_test_id}}
 Content-Type: application/json

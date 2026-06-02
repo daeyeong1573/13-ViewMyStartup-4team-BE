@@ -4,6 +4,18 @@ export const investmentParamsSchema = z.object({
   id: z.string().uuid("유효하지 않은 투자 ID입니다."),
 });
 
+export const createInvestmentSchema = z.object({
+  startupId: z.string().uuid("유효하지 않은 기업 ID입니다."),
+
+  investorName: z.string().min(2, "성과 이름을 입력해주세요"),
+
+  amount: z.coerce.bigint().positive("투자 금액은 0보다 커야 합니다."),
+
+  comment: z.string().min(1, "코멘트를 입력해주세요."),
+
+  password: z.string().min(1, "비밀번호를 입력해주세요."),
+});
+
 export const updateInvestmentBodySchema = z
   .object({
     amount: z.coerce

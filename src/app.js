@@ -14,6 +14,7 @@ import {
 import compareSchema from "./schemas/compareSchema.js";
 import compareController from "./controllers/compareController.js";
 import {
+  createInvestmentSchema,
   deleteInvestmentBodySchema,
   investmentParamsSchema,
   updateInvestmentBodySchema,
@@ -23,6 +24,7 @@ import {
   deleteInvestment,
   patchInvestment,
   getInvestmentStatus,
+  postInvestment,
 } from "./controllers/investmentController.js";
 
 const envFile = `.env.${process.env.NODE_ENV || "development"}`;
@@ -61,6 +63,9 @@ app.post(
   validate(compareSchema.compareSelectionSchema),
   compareController.createCompareSelection,
 );
+
+//Post investments
+app.post("/investments", validate(createInvestmentSchema), postInvestment);
 
 //Patch investments
 app.patch(
