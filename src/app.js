@@ -11,8 +11,8 @@ import {
   listStartups,
   listStartupInvestments,
 } from "./controllers/startupController.js";
-import { compareSelectionSchema } from "./schemas/compareSchema.js";
-import { createCompareSelection } from "./controllers/compareController.js";
+import compareSchema from "./schemas/compareSchema.js";
+import compareController from "./controllers/compareController.js";
 import {
   createInvestmentSchema,
   deleteInvestmentBodySchema,
@@ -50,8 +50,19 @@ app.get(
   listStartupInvestments,
 );
 
+//Get compare Result
+app.get(
+  "/compare/result",
+  validate(compareSchema.compareResultQuerySchema, "query"),
+  compareController.getCompareResultController,
+);
+
 //Post compare
-app.post("/compare", validate(compareSelectionSchema), createCompareSelection);
+app.post(
+  "/compare",
+  validate(compareSchema.compareSelectionSchema),
+  compareController.createCompareSelection,
+);
 
 //Post investments
 app.post("/investments", validate(createInvestmentSchema), postInvestment);
