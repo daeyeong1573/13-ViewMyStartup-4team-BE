@@ -11,20 +11,20 @@ import {
   listStartups,
   listStartupInvestments,
 } from "./controllers/startupController.js";
-import { compareSelectionSchema } from "./schemas/compareSchema.js";
-import { createCompareSelection } from "./controllers/compareController.js";
+import compareSchema from "./schemas/compareSchema.js";
+import compareController from "./controllers/compareController.js";
 import { handleGetCompareStatus } from "./controllers/compareStatusController.js";
-
 import {
+  createInvestmentSchema,
   deleteInvestmentBodySchema,
   investmentParamsSchema,
   updateInvestmentBodySchema,
 } from "./schemas/investmentSchema.js";
-
 import {
   deleteInvestment,
   patchInvestment,
   getInvestmentStatus,
+  postInvestment,
 } from "./controllers/investmentController.js";
 
 const envFile = `.env.${process.env.NODE_ENV || "development"}`;
@@ -50,8 +50,22 @@ app.get(
   listStartupInvestments,
 );
 
+//Get compare Result
+app.get(
+  "/compare/result",
+  validate(compareSchema.compareResultQuerySchema, "query"),
+  compareController.getCompareResultController,
+);
+
 //Post compare
-app.post("/compare", validate(compareSelectionSchema), createCompareSelection);
+app.post(
+  "/compare",
+  validate(compareSchema.compareSelectionSchema),
+  compareController.createCompareSelection,
+);
+
+//Post investments
+app.post("/investments", validate(createInvestmentSchema), postInvestment);
 
 // Get compareStatus
 app.get("/compare/status", handleGetCompareStatus);

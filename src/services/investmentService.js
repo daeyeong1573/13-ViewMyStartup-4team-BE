@@ -1,6 +1,41 @@
 import prisma from "../lib/prisma.js";
 import { NotFoundError, ValidationError } from "../utils/errors.js";
 
+export async function createInvestment({
+  startupId,
+  investorName,
+  amount,
+  comment,
+  password,
+}) {
+  const createdData = await prisma.virtualInvestment.create({
+    data: {
+      startupId,
+      investorName,
+      amount: amount.toString(),
+      comment,
+      password,
+    },
+    select: {
+      id: true,
+      startupId: true,
+      investorName: true,
+      amount: true,
+      comment: true,
+      createdAt: true,
+    },
+  });
+
+  return {
+    id: createdData.id,
+    startupId: createdData.startupId,
+    investorName: createdData.investorName,
+    amount: createdData.amount.toString(),
+    comment: createdData.comment,
+    createdAt: createdData.createdAt,
+  };
+}
+
 export async function updateInvestment(id, { amount, comment, password }) {
   const investment = await prisma.virtualInvestment.findUnique({
     where: { id },
@@ -96,14 +131,34 @@ export async function getInvestmentStatusList({ page, limit, orderBy }) {
     };
   });
 
-  // 동적 정렬
+  //  2차 정렬: 금액이 같으면 기업명 가나다순
   const investmentSortStrategies = {
-    virtualInvestment_desc: (a, b) =>
-      b.virtualInvestmentTotal - a.virtualInvestmentTotal,
-    virtualInvestment_asc: (a, b) =>
-      a.virtualInvestmentTotal - b.virtualInvestmentTotal,
-    totalInvestment_desc: (a, b) => b.totalInvestment - a.totalInvestment,
-    totalInvestment_asc: (a, b) => a.totalInvestment - b.totalInvestment,
+    virtualInvestment_desc: (a, b) => {
+      // 금액이 다르면 기존처럼 금액순으로 정렬
+      if (b.virtualInvestmentTotal !== a.virtualInvestmentTotal) {
+        return b.virtualInvestmentTotal - a.virtualInvestmentTotal;
+      }
+      // 금액이 완전히 같으면 기업 이름(name) 가나다순으로 정렬
+      return a.name.localeCompare(b.name);
+    },
+    virtualInvestment_asc: (a, b) => {
+      if (a.virtualInvestmentTotal !== b.virtualInvestmentTotal) {
+        return a.virtualInvestmentTotal - b.virtualInvestmentTotal;
+      }
+      return a.name.localeCompare(b.name);
+    },
+    totalInvestment_desc: (a, b) => {
+      if (b.totalInvestment !== a.totalInvestment) {
+        return b.totalInvestment - a.totalInvestment;
+      }
+      return a.name.localeCompare(b.name);
+    },
+    totalInvestment_asc: (a, b) => {
+      if (a.totalInvestment !== b.totalInvestment) {
+        return a.totalInvestment - b.totalInvestment;
+      }
+      return a.name.localeCompare(b.name);
+    },
   };
 
   const currentSortFn = investmentSortStrategies[orderBy];
