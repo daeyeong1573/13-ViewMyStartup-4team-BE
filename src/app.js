@@ -13,13 +13,13 @@ import {
 } from "./controllers/startupController.js";
 import compareSchema from "./schemas/compareSchema.js";
 import compareController from "./controllers/compareController.js";
+import { handleGetCompareStatus } from "./controllers/compareStatusController.js";
 import {
   createInvestmentSchema,
   deleteInvestmentBodySchema,
   investmentParamsSchema,
   updateInvestmentBodySchema,
 } from "./schemas/investmentSchema.js";
-
 import {
   deleteInvestment,
   patchInvestment,
@@ -66,6 +66,13 @@ app.post(
 
 //Post investments
 app.post("/investments", validate(createInvestmentSchema), postInvestment);
+
+// Get compareStatus
+app.get(
+  "/compare/status",
+  validate(compareSchema.compareStatusQuerySchema, "query"),
+  handleGetCompareStatus,
+);
 
 //Patch investments
 app.patch(

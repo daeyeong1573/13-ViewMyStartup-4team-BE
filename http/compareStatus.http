@@ -1,0 +1,21 @@
+@local_url = http://localhost:3000
+
+### 1. 기본 조회 (정렬 조건 없을 때 - 기본값: 나의 기업 선택 횟수 높은 순)
+GET {{local_url}}/compare/status
+Accept: application/json
+
+### 2. [드롭다운] 나의 기업 선택 횟수 높은 순 (내림차순)
+GET {{local_url}}/compare/status?orderBy=myStartupCount_desc
+Accept: application/json
+
+### 3. [드롭다운] 나의 기업 선택 횟수 낮은 순 (오름차순)
+GET {{local_url}}/compare/status?orderBy=myStartupCount_asc
+Accept: application/json
+
+### 4. [드롭다운] 비교 기업 선택 횟수 높은 순 (내림차순)
+GET {{local_url}}/compare/status?orderBy=compareStartupCount_desc
+Accept: application/json
+
+### 5. [드롭다운] 비교 기업 선택 횟수 낮은 순 (오름차순)
+GET {{local_url}}/compare/status?orderBy=compareStartupCount_asc
+Accept: application/json
