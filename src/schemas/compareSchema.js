@@ -3,6 +3,8 @@ import { z } from "zod";
 const COMPARE_STARTUP = {
   MIN: 1,
   MAX: 5,
+  PAGE: 1,
+  LIMIT: 10,
 };
 
 const SORT_FIELDS = {
@@ -12,6 +14,11 @@ const SORT_FIELDS = {
   revenue_asc: { revenue: "asc" },
   employeeCount_desc: { employeeCount: "desc" },
   employeeCount_asc: { employeeCount: "asc" },
+
+  myStartupCount_desc: { myStartupCount: "desc" },
+  myStartupCount_asc: { myStartupCount: "asc" },
+  compareStartupCount_desc: { compareStartupCount: "desc" },
+  compareStartupCount_asc: { compareStartupCount: "asc" },
 };
 
 const compareSelectionSchema = z.object({
@@ -36,9 +43,27 @@ const compareResultQuerySchema = z.object({
     .transform((val) => SORT_FIELDS[val] ?? { totalInvestment: "desc" }),
 });
 
+const compareStatusQuerySchema = z.object({
+  page: z
+    .string()
+    .optional()
+    .default(String(COMPARE_STARTUP.PAGE))
+    .transform(Number),
+  limit: z
+    .string()
+    .optional()
+    .default(String(COMPARE_STARTUP.LIMIT))
+    .transform(Number),
+  orderBy: z
+    .string()
+    .optional()
+    .transform((val) => SORT_FIELDS[val] ?? SORT_FIELDS.myStartupCount_desc),
+});
+
 const compareSchema = {
   compareSelectionSchema,
   compareResultQuerySchema,
+  compareStatusQuerySchema,
 };
 
 export default compareSchema;

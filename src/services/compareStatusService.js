@@ -1,65 +1,35 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
 
 export const getCompareStatusData = async ({ page, limit, orderBy }) => {
   try {
-    const currentPage = parseInt(page, 10) || 1;
-    const perPage = parseInt(limit, 10) || 10;
-    const offset = (currentPage - 1) * perPage;
-
-    let orderByCondition = { myStartupCount: "desc" };
-
-    if (orderBy === "myStartupCount_asc") {
-      orderByCondition = { myStartupCount: "asc" };
-    } else if (orderBy === "compareStartupCount_desc") {
-      orderByCondition = { compareStartupCount: "desc" };
-    } else if (orderBy === "compareStartupCount_asc") {
-      orderByCondition = { compareStartupCount: "asc" };
-    }
+    const skip = (page - 1) * limit;
 
     const [total, dataResult] = await prisma.$transaction([
       prisma.startup.count(),
       prisma.startup.findMany({
-        skip: offset,
-        take: perPage,
-        orderBy: orderByCondition,
+        skip: skip,
+        take: limit,
+        orderBy: orderBy,
       }),
     ]);
 
     const sanitizedData = dataResult.map((startup) => ({
-      ...startup,
-      myStartupCount: parseInt(
-        (startup.myStartupCount || startup.my_startup_count || 0).toString(),
-        10,
-      ),
-      totalInvestment: parseInt(
-        (
-          startup.totalInvestment ||
-          startup.compareStartupCount ||
-          0
-        ).toString(),
-        10,
-      ),
-      compareStartupCount: parseInt(
-        (
-          startup.compareStartupCount ||
-          startup.compare_startup_count ||
-          0
-        ).toString(),
-        10,
-      ),
+      id: startup.id,
+      name: startup.name,
+      description: startup.description,
+      category: startup.category,
+      myStartupCount: Number(startup.myStartupCount || 0),
+      compareStartupCount: Number(startup.compareStartupCount || 0),
+      imgUrl: startup.imgUrl,
     }));
-
-    const totalPages = Math.ceil(total / perPage);
 
     return {
       data: sanitizedData,
       pagination: {
-        page: currentPage,
-        limit: perPage,
+        page,
+        limit,
         total,
-        totalPages,
+        totalPages: Math.ceil(total / limit),
       },
     };
   } catch (error) {

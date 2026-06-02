@@ -68,7 +68,12 @@ app.post(
 app.post("/investments", validate(createInvestmentSchema), postInvestment);
 
 // Get compareStatus
-app.get("/compare/status", handleGetCompareStatus);
+app.get(
+  "/compare/status",
+  validate(compareSchema.compareStatusQuerySchema, "query"),
+  handleGetCompareStatus,
+);
+
 //Patch investments
 app.patch(
   "/investments/:id",
