@@ -15,7 +15,7 @@ const SORT_FIELDS = {
 };
 
 const compareSelectionSchema = z.object({
-  myStartupId: z.uuid(),
+  myStartupId: z.string().uuid(),
   compareStartupIds: z
     .array(z.uuid())
     .min(COMPARE_STARTUP.MIN, "비교 기업은 최소 1개 이상이어야 합니다")
