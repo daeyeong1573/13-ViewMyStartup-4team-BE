@@ -5,8 +5,8 @@ import {
 } from "../services/startupService.js";
 
 export const listStartups = asyncHandler(async (req, res) => {
-  const { search, page, limit } = req.validatedData;
-  const result = await getStartups({ search, page, limit });
+  const { search, page, limit, myStartupId } = req.validatedData;
+  const result = await getStartups({ search, page, limit, myStartupId });
   res.status(200).json(result);
 });
 

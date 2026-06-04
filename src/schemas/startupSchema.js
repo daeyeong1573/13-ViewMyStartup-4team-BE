@@ -7,15 +7,14 @@ const PAGINATION = {
 
 export const startupListQuerySchema = z.object({
   search: z.string().trim().optional(),
-
   page: z.coerce.number().int().min(1).default(1),
-
   limit: z.coerce
     .number()
     .int()
     .min(1)
     .max(PAGINATION.startup.MAX_LIMIT)
     .default(PAGINATION.startup.DEFAULT_LIMIT),
+  myStartupId: z.string().uuid().optional(),
 });
 
 export const startupParamsSchema = z.object({
