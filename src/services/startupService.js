@@ -1,12 +1,13 @@
 import prisma from "../lib/prisma.js";
 import { NotFoundError } from "../utils/errors.js";
 
-export async function getStartups({ search, page, limit }) {
+export async function getStartups({ search, page, limit, myStartupId }) {
   const skip = (page - 1) * limit;
 
-  const where = search
-    ? { name: { contains: search, mode: "insensitive" } }
-    : {};
+  const where = {
+    ...(search && { name: { contains: search, mode: "insensitive" } }),
+    ...(myStartupId && { id: { not: myStartupId } }),
+  };
 
   const [total, startups] = await Promise.all([
     prisma.startup.count({ where }),
