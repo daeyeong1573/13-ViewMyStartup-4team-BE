@@ -25,7 +25,7 @@ export async function saveCompareSelection({ myStartupId, compareStartupIds }) {
   ]);
 }
 
-//비교 결과
+// 비교 결과
 export async function getCompareResult({
   myStartupId,
   compareStartupIds,
@@ -33,9 +33,9 @@ export async function getCompareResult({
 }) {
   const targetIds = [myStartupId, ...compareStartupIds];
 
-  // 1. 비교 대상 스타트업 조회
   const startups = await prisma.startup.findMany({
     where: { id: { in: targetIds } },
+    orderBy: [orderBy, { id: "asc" }],
     select: {
       id: true,
       name: true,
@@ -51,12 +51,14 @@ export async function getCompareResult({
   const myStartup = serializeStartup(
     startups.find((s) => s.id === myStartupId),
   );
-  const compareStartups = compareStartupIds
-    .map((id) => startups.find((s) => s.id === id))
-    .filter(Boolean)
-    .map(serializeStartup);
 
-  // 2. 전체 순위 계산 (orderBy 기준)
+  const compareStartups = startups.map(serializeStartup);
+
+  return { myStartup, compareStartups };
+}
+
+// 기업 순위
+export async function getCompareRank({ myStartupId, orderBy }) {
   const allStartups = await prisma.startup.findMany({
     orderBy: [orderBy, { id: "asc" }],
     select: {
@@ -74,22 +76,14 @@ export async function getCompareResult({
   const myRankIndex = allStartups.findIndex((s) => s.id === myStartupId);
   const myRank = myRankIndex + 1;
 
-  // 3. 위2 아래2 (내 기업 포함 최대 5개)
   const start = Math.max(0, myRankIndex - 2);
   const end = Math.min(allStartups.length, myRankIndex + 3);
 
   const nearbyStartups = allStartups.slice(start, end).map((s, i) => ({
     rank: start + i + 1,
-    ...serializeStartup(s),
     isMyStartup: s.id === myStartupId,
+    ...serializeStartup(s),
   }));
 
-  return {
-    myStartup,
-    compareStartups,
-    rank: {
-      myRank,
-      nearbyStartups,
-    },
-  };
+  return { myRank, nearbyStartups };
 }

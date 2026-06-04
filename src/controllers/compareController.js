@@ -1,4 +1,5 @@
 import {
+  getCompareRank,
   getCompareResult,
   saveCompareSelection,
 } from "../services/compareService.js";
@@ -20,9 +21,16 @@ export const getCompareResultController = asyncHandler(async (req, res) => {
   res.status(200).json(result);
 });
 
+export const getCompareRankController = asyncHandler(async (req, res) => {
+  const { myStartupId, orderBy } = req.validatedData;
+  const result = await getCompareRank({ myStartupId, orderBy });
+  res.status(200).json(result);
+});
+
 const compareController = {
   createCompareSelection,
   getCompareResultController,
+  getCompareRankController,
 };
 
 export default compareController;

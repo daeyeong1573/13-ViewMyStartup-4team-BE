@@ -43,6 +43,14 @@ const compareResultQuerySchema = z.object({
     .transform((val) => SORT_FIELDS[val] ?? { totalInvestment: "desc" }),
 });
 
+export const compareRankQuerySchema = z.object({
+  myStartupId: z.string().uuid(),
+  orderBy: z
+    .string()
+    .optional()
+    .transform((val) => SORT_FIELDS[val] ?? { revenue: "desc" }),
+});
+
 const compareStatusQuerySchema = z.object({
   page: z
     .string()
@@ -64,6 +72,7 @@ const compareSchema = {
   compareSelectionSchema,
   compareResultQuerySchema,
   compareStatusQuerySchema,
+  compareRankQuerySchema,
 };
 
 export default compareSchema;
