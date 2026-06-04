@@ -1,0 +1,40 @@
+@local_url = http://localhost:3000
+
+
+### 1. 비교 결과 조회 (기본값: totalInvestment_desc)
+GET {{local_url}}/compare/result?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c&compareStartupIds=b08b6965-2ccb-4d53-ac00-fa36261ca74d,8cde5c8a-c89f-4b4d-9339-68e4f9d301ab
+
+### 2. [드롭다운] 누적 투자 금액 높은순
+GET {{local_url}}/compare/result?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c&compareStartupIds=b08b6965-2ccb-4d53-ac00-fa36261ca74d,8cde5c8a-c89f-4b4d-9339-68e4f9d301ab&orderBy=totalInvestment_desc
+
+### 3. [드롭다운] 누적 투자 금액 낮은순
+GET {{local_url}}/compare/result?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c&compareStartupIds=b08b6965-2ccb-4d53-ac00-fa36261ca74d,8cde5c8a-c89f-4b4d-9339-68e4f9d301ab&orderBy=totalInvestment_asc
+
+### 4. [드롭다운] 매출액 높은순
+GET {{local_url}}/compare/result?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c&compareStartupIds=b08b6965-2ccb-4d53-ac00-fa36261ca74d,8cde5c8a-c89f-4b4d-9339-68e4f9d301ab&orderBy=revenue_desc
+
+### 5. [드롭다운] 매출액 낮은순
+GET {{local_url}}/compare/result?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c&compareStartupIds=b08b6965-2ccb-4d53-ac00-fa36261ca74d,8cde5c8a-c89f-4b4d-9339-68e4f9d301ab&orderBy=revenue_asc
+
+### 6. [드롭다운] 고용 인원 많은순
+GET {{local_url}}/compare/result?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c&compareStartupIds=b08b6965-2ccb-4d53-ac00-fa36261ca74d,8cde5c8a-c89f-4b4d-9339-68e4f9d301ab&orderBy=employeeCount_desc
+
+### 7. [드롭다운] 고용 인원 적은순
+GET {{local_url}}/compare/result?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c&compareStartupIds=b08b6965-2ccb-4d53-ac00-fa36261ca74d,8cde5c8a-c89f-4b4d-9339-68e4f9d301ab&orderBy=employeeCount_asc
+
+
+
+### 8. 기업 순위 조회 (기본값: revenue_desc)
+GET {{local_url}}/compare/rank?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c
+
+### 9. [드롭다운] 매출액 높은순
+GET {{local_url}}/compare/rank?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c&orderBy=revenue_desc
+
+### 10. [드롭다운] 매출액 낮은순
+GET {{local_url}}/compare/rank?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c&orderBy=revenue_asc
+
+### 11. [드롭다운] 고용 인원 많은순
+GET {{local_url}}/compare/rank?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c&orderBy=employeeCount_desc
+
+### 12. [드롭다운] 고용 인원 적은순
+GET {{local_url}}/compare/rank?myStartupId=23ccbb62-8274-4007-b74e-0113aa34a26c&orderBy=employeeCount_asc

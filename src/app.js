@@ -57,6 +57,13 @@ app.get(
   compareController.getCompareResultController,
 );
 
+//Get compare Rank
+app.get(
+  "/compare/rank",
+  validate(compareSchema.compareRankQuerySchema, "query"),
+  compareController.getCompareRankController,
+);
+
 //Post compare
 app.post(
   "/compare",
