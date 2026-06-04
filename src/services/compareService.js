@@ -81,7 +81,6 @@ export async function getCompareRank({ myStartupId, orderBy }) {
 
   const nearbyStartups = allStartups.slice(start, end).map((s, i) => ({
     rank: start + i + 1,
-    isMyStartup: s.id === myStartupId,
     ...serializeStartup(s),
   }));
 
