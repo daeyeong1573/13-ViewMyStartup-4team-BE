@@ -18,6 +18,8 @@ export const createInvestmentSchema = z.object({
 
 export const updateInvestmentBodySchema = z
   .object({
+    investorName: z.string().min(2, "성과 이름을 입력해주세요").optional(),
+
     amount: z.coerce
       .bigint()
       .positive("투자 금액은 0보다 커야 합니다.")
@@ -27,10 +29,16 @@ export const updateInvestmentBodySchema = z
 
     password: z.string().min(1, "비밀번호를 입력해주세요."),
   })
-  .refine((data) => data.amount !== undefined || data.comment !== undefined, {
-    message: "수정할 값을 하나 이상 입력해주세요.",
-    path: ["root"],
-  });
+  .refine(
+    (data) =>
+      data.investorName !== undefined ||
+      data.amount !== undefined ||
+      data.comment !== undefined,
+    {
+      message: "수정할 값을 하나 이상 입력해주세요.",
+      path: ["root"],
+    },
+  );
 
 export const deleteInvestmentBodySchema = z.object({
   password: z.string().min(1, "비밀번호를 입력해주세요."),

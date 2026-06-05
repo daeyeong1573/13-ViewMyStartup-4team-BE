@@ -44,6 +44,7 @@ PATCH {{local_url}}/investments/{{investment_test_id}}
 Content-Type: application/json
 
 {
+  "investorName": "김은진",
   "amount": "1000000222",
   "comment": "테스트444444",
   "password": "1234"

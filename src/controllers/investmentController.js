@@ -20,8 +20,13 @@ export const postInvestment = asyncHandler(async (req, res) => {
 });
 
 export const patchInvestment = asyncHandler(async (req, res) => {
-  const { id, amount, comment, password } = req.validatedData;
-  const result = await updateInvestment(id, { amount, comment, password });
+  const { id, investorName, amount, comment, password } = req.validatedData;
+  const result = await updateInvestment(id, {
+    investorName,
+    amount,
+    comment,
+    password,
+  });
   res.status(200).json(result);
 });
 
