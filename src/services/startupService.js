@@ -1,0 +1,126 @@
+import prisma from "../lib/prisma.js";
+import { NotFoundError } from "../utils/errors.js";
+
+export async function getStartups({ search, page, limit, myStartupId }) {
+  const skip = (page - 1) * limit;
+
+  const where = {
+    ...(search && { name: { contains: search, mode: "insensitive" } }),
+    ...(myStartupId && { id: { not: myStartupId } }),
+  };
+
+  const [total, startups] = await Promise.all([
+    prisma.startup.count({ where }),
+    prisma.startup.findMany({
+      where,
+      skip,
+      take: limit,
+      orderBy: [{ createdAt: "desc" }, { name: "asc" }],
+      select: {
+        id: true,
+        name: true,
+        category: true,
+        description: true,
+        imgUrl: true,
+        totalInvestment: true,
+        revenue: true,
+        employeeCount: true,
+      },
+    }),
+  ]);
+
+  const data = startups.map((s) => ({
+    ...s,
+    totalInvestment: s.totalInvestment.toString(),
+    revenue: s.revenue.toString(),
+  }));
+
+  return {
+    data,
+    pagination: {
+      page,
+      limit,
+      total,
+      totalPages: Math.ceil(total / limit),
+    },
+  };
+}
+
+export async function getStartupDetailWithInvestments({ id, page, limit }) {
+  const skip = (page - 1) * limit;
+
+  const [startup, totalInvestmentCount, aggregateResult] = await Promise.all([
+    prisma.startup.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        name: true,
+        category: true,
+        description: true,
+        imgUrl: true,
+        totalInvestment: true,
+        revenue: true,
+        employeeCount: true,
+      },
+    }),
+    prisma.virtualInvestment.count({ where: { startupId: id } }),
+    prisma.virtualInvestment.aggregate({
+      where: { startupId: id },
+      _sum: {
+        amount: true,
+      },
+    }),
+  ]);
+
+  if (!startup) {
+    throw new NotFoundError("해당 기업을 찾을 수 없습니다.");
+  }
+
+  const investments = await prisma.virtualInvestment.findMany({
+    where: { startupId: id },
+    select: {
+      id: true,
+      investorName: true,
+      amount: true,
+      comment: true,
+      createdAt: true,
+    },
+    orderBy: [
+      //금액순, 생성순, 투자자 가나다순 정렬
+      { amount: "desc" },
+      { createdAt: "desc" },
+      { investorName: "asc" },
+    ],
+    skip,
+    take: limit,
+  });
+
+  //순위 매기기
+  const formattedInvestments = investments.map((investment, index) => ({
+    id: investment.id,
+    investorName: investment.investorName,
+    amount: investment.amount.toString(),
+    comment: investment.comment,
+    createdAt: investment.createdAt,
+    rank: skip + index + 1,
+  }));
+
+  //합계가 없을 경우
+  const virtualInvestmentTotal = aggregateResult._sum.amount || 0n;
+
+  return {
+    ...startup,
+    totalInvestment: startup.totalInvestment.toString(),
+    revenue: startup.revenue.toString(),
+    virtualInvestmentTotal: virtualInvestmentTotal.toString(),
+    investmentList: {
+      data: formattedInvestments,
+      pagination: {
+        page,
+        limit,
+        total: totalInvestmentCount,
+        totalPages: Math.ceil(totalInvestmentCount / limit),
+      },
+    },
+  };
+}
