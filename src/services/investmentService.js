@@ -36,7 +36,10 @@ export async function createInvestment({
   };
 }
 
-export async function updateInvestment(id, { amount, comment, password }) {
+export async function updateInvestment(
+  id,
+  { investorName, amount, comment, password },
+) {
   const investment = await prisma.virtualInvestment.findUnique({
     where: { id },
   });
@@ -52,6 +55,7 @@ export async function updateInvestment(id, { amount, comment, password }) {
   const updatedData = await prisma.virtualInvestment.update({
     where: { id },
     data: {
+      ...(investorName !== undefined && { investorName }),
       ...(amount !== undefined && { amount }),
       ...(comment !== undefined && { comment }),
     },
