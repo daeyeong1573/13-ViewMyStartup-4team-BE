@@ -31,6 +31,6 @@ export const investmentQuerySchema = z.object({
     .max(PAGINATION.investment.MAX_LIMIT)
     .default(PAGINATION.investment.DEFAULT_LIMIT),
   myStartupId: z.string().uuid().optional(),
-  // 👇 새로 추가된 부분: 정렬 옵션(문자열)을 받을 수 있게 허용
+
   orderBy: z.string().optional(),
 });
