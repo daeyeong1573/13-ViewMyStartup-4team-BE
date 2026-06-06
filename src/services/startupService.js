@@ -1,21 +1,40 @@
 import prisma from "../lib/prisma.js";
 import { NotFoundError } from "../utils/errors.js";
+// 👇 새로 추가된 부분: 프론트엔드의 문자열을 Prisma 쿼리 객체로 변환하는 매핑 테이블
+const StartupSort = {
+  totalInvestment_desc: { totalInvestment: "desc" },
+  totalInvestment_asc: { totalInvestment: "asc" },
+  revenue_desc: { revenue: "desc" },
+  revenue_asc: { revenue: "asc" },
+  employeeCount_desc: { employeeCount: "desc" },
+  employeeCount_asc: { employeeCount: "asc" },
+};
 
-export async function getStartups({ search, page, limit, myStartupId }) {
+export async function getStartups({
+  search,
+  page,
+  limit,
+  myStartupId,
+  orderBy,
+}) {
   const skip = (page - 1) * limit;
 
   const where = {
     ...(search && { name: { contains: search, mode: "insensitive" } }),
     ...(myStartupId && { id: { not: myStartupId } }),
   };
+  // 👇 새로 추가된 부분: 매핑된 정렬 기준 가져오기 (기본값은 최신순)
+  const prismaOrderBy = StartupSort[orderBy] || {
+    createdAt: "desc",
+  };
 
   const [total, startups] = await Promise.all([
     prisma.startup.count({ where }),
     prisma.startup.findMany({
       where,
-      skip,
+      skip: skip,
       take: limit,
-      orderBy: [{ createdAt: "desc" }, { name: "asc" }],
+      orderBy: [prismaOrderBy, { name: "asc" }],
       select: {
         id: true,
         name: true,
